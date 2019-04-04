@@ -37,13 +37,25 @@ int multiplicarDosEnteros(int val1, int val2, int *resultado)
 int factorialDeUnNumero(int val1, long int *resultado)
 {
     int i;
-    *resultado = val1;
+    int ret = 0;
+    long int buffer;
+    buffer = val1;
     val1--;
-    for (i=1;i<val1;val1--)
+    if (val1<0)
     {
-        *resultado = *resultado * val1;
-    }
-    return 0;
+        ret = -1;
+    }else if (val1 == 0)
+        {
+            buffer = 1;
+        }else
+            {
+                for (i=1;i<val1;val1--)
+                {
+                    buffer *= val1;
+                }
+            }
+    *resultado = buffer;
+    return ret;
 }
 
 int mostrarMenuCalculadora (int a, int b)
