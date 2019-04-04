@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1554339590 source:/home/alumno/Descargas/ENTREGAStps/practica array/practicaArray/funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"funciones.h"
+
+1554339590 /home/alumno/Descargas/ENTREGAStps/practica array/practicaArray/funciones.h
+
+1554339667 source:/home/alumno/Descargas/ENTREGAStps/practica array/practicaArray/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
