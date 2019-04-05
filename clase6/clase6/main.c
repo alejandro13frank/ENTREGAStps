@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #define NUM_LEN 10
 
-int calcularPromedio(int *pArrayResultado, float *promedio, int tamArray);
-int calcularMin (int *pArray, int len, int *minimo);
-int calcularMax (int *pArray, int len, int *maximo);
-int buscarNumeroArray(int *pArray, int len, int numero);
-int ordenarBurbujeo(int *pArrayInt, int limite, int menorMayor);
-int swap(int *A, int *B);
-int mostrarArray (int *pArray,int limite);
+int int calcularPromedio(int *pArrayResultado, float *promedio, int tamArray);
+int int calcularMin (int *pArray, int len, int *minimo);
+int int calcularMax (int *pArray, int len, int *maximo);
+int int buscarNumeroArray(int *pArray, int len, int numero);
+int int ordenarBurbujeo(int *pArrayInt, int limite, int menorMayor);
+int int swap(int *A, int *B);
+int int mostrarArray (int *pArray,int limite);
 
 int main()
 {
@@ -21,9 +21,9 @@ int main()
     calcularMin(array, NUM_LEN, &minimo);
     calcularPromedio(array, &promedio, NUM_LEN);
 
-    ordenarBurbujeo(array,NUM_LEN,0);
+    ordenarBurbujeo(array,NUM_LEN,0);//ordena de mayor a menor
     mostrarArray (array,NUM_LEN);
-    ordenarBurbujeo(array,NUM_LEN,1);
+    ordenarBurbujeo(array,NUM_LEN,1);//ordena de menor a mayor
     mostrarArray (array,NUM_LEN);
 
     printf("maximo: %d\n", maximo);
@@ -91,7 +91,7 @@ int buscarNumeroArray(int *pArray, int len, int numero)
     return ret;
 }
 
-int swap(int *A, int *B)
+int int swap(int *A, int *B)
 {
     int buffer;
 
