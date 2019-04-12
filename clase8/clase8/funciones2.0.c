@@ -21,6 +21,7 @@ int utn_getNumber(int* pResultado,char *mensaje,char *mensajeError,int minimo,in
             {
                 ret = 0;
                 *pResultado = bufferInt;
+                break;
             }
         }
     reintentos--;
