@@ -42,3 +42,20 @@
 	<string.h>
 	"utn.h"
 
+1555547091 source:/home/alumno/Documentos/ENTREGAStps/Clase7_completado/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"empleado.h"
+
+1555536292 /home/alumno/Documentos/ENTREGAStps/Clase7_completado/utn.h
+
+1555549157 /home/alumno/Documentos/ENTREGAStps/Clase7_completado/empleado.h
+
+1555536292 source:/home/alumno/Documentos/ENTREGAStps/Clase7_completado/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
