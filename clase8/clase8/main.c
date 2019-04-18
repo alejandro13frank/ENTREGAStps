@@ -38,7 +38,7 @@ int borrarNombre (char vector[][20],int pIndex)
 
 int main()
 {
-    int option = 1;
+    /*int option = 1;
     int index;
     char buffer[40];
     char lista [20][20];
@@ -61,7 +61,10 @@ int main()
             case 0:
                 break;
         }
-    }
+    }*/
+    int n = 5;
+    int *p = n;
+    printf("%d",*p);
     return 0;
 }
 
