@@ -29,7 +29,7 @@ int empleado_MostrarArray(Empleado *arrayEmpleados,int tamArray)
     {
         for (i=0;i<tamArray;i++)
         {
-            if (!arrayEmpleados[i].isEmpty)
+            if (!arrayEmpleados[i].isEmpty && arrayEmpleados[i].isActive)
             {
                 printf("\nEsta ocupado en posicion %d",i);
                 printf("\nnombre: %s",arrayEmpleados[i].nombre);
@@ -44,8 +44,7 @@ int empleado_MostrarArray(Empleado *arrayEmpleados,int tamArray)
     }
     return ret;
 }
-int empleado_BuscarLibre(Empleado *arrayEmpleados,int tamArray, int *posicionLibre)
-// MODIFICAR PARA QUE DEVUELVA LA POSICION LIBRE
+int empleado_BuscarLibre(Empleado *arrayEmpleados,int tamArray)
 {
     int i;
     int ret = -1;
@@ -55,8 +54,7 @@ int empleado_BuscarLibre(Empleado *arrayEmpleados,int tamArray, int *posicionLib
         {
             if (arrayEmpleados[i].isEmpty)
             {
-                *posicionLibre = i;
-                ret = 0;
+                ret =i;
                 break;
             }
         }
@@ -67,10 +65,10 @@ int empleado_Alta(Empleado arrayEmpleados[],int tamArray, int id)
 {
     int ret=-1;
     Empleado empleadoNuevo;
-    int posicionLibre;
+    int posLibre=empleado_BuscarLibre(arrayEmpleados,tamArray);
     if ((arrayEmpleados!=NULL) && (tamArray>=0))
     {
-        if (!empleado_BuscarLibre(arrayEmpleados,tamArray,&posicionLibre))
+        if (posLibre>=0)
         {
             //printf("\nok1");
             //utn_getString(empleadoNuevo.nombre,"\nIngrese nombre de empleado: ","\nReintente, error.",1,20,3);
@@ -87,7 +85,8 @@ int empleado_Alta(Empleado arrayEmpleados[],int tamArray, int id)
 
             empleadoNuevo.isEmpty = 0;
             empleadoNuevo.idEmpleado = id;
-            arrayEmpleados[posicionLibre] = empleadoNuevo;
+            empleadoNuevo.isActive = 1;
+            arrayEmpleados[posLibre] = empleadoNuevo;
             ret = 0;
         }else{
             printf("No se pudo encontrar una pisicion libre");
@@ -95,3 +94,92 @@ int empleado_Alta(Empleado arrayEmpleados[],int tamArray, int id)
     }
     return ret;
 }
+int empleado_buscarEmpleado(Empleado *arrayEmplado, int tamArray, char *nombre, char *apellido)
+{
+    int i;
+    int ret=-1;
+    for (i=0;i<tamArray;i++)
+    {
+        if(!strcmp(nombre,arrayEmplado[i].nombre)
+           && !strcmp(apellido,arrayEmplado[i].apellido)
+           && arrayEmplado[i].isActive)
+        {
+            ret =i;
+            break;
+        }
+    }
+    return ret;
+}
+
+int empleado_Baja(Empleado *arrayEmpleados,int tamArray)
+{
+    int ret=-1;
+    char nombre[50];
+    char apellido[50];
+    int posicionEmpleado;
+    //utn_getString(nombre,"ingrese nombre a borrar: ","Nombre invalido",0,49,3);
+    //utn_getString(nombre,"ingrese apellido a borrar: ","apellido invalido",0,49,3);
+    __fpurge(stdin);
+    printf("\nIngrese nombre a borrar: ");
+    fgets(nombre,sizeof(nombre),stdin);
+    nombre[strlen(nombre) - 1] = '\0';
+
+    printf("\nIngrese apellido a borrar: ");
+    fgets(apellido,sizeof(apellido),stdin);
+    apellido[strlen(apellido) - 1] = '\0';
+    posicionEmpleado= empleado_buscarEmpleado(arrayEmpleados,tamArray,nombre,apellido);
+    if (posicionEmpleado>=0)
+    {
+        arrayEmpleados[posicionEmpleado].isActive = 0;
+        ret = 0;
+    }
+
+
+    return ret;
+}
+
+int empleado_Modificacion(Empleado *arrayEmpleados,int tamArray)
+{
+    Empleado empleadoModificado;
+    int ret=-1;
+    char nombre[50];
+    char apellido[50];
+    int posicionEmpleado;
+    //utn_getString(nombre,"ingrese nombre a modificar: ","Nombre invalido",0,49,3);
+    //utn_getString(nombre,"ingrese apellido a modificar: ","apellido invalido",0,49,3);
+    __fpurge(stdin);
+    printf("\nIngrese nombre a modificar: ");
+    fgets(nombre,sizeof(nombre),stdin);
+    nombre[strlen(nombre) - 1] = '\0';
+
+    printf("\nIngrese apellido a modificar: ");
+    fgets(apellido,sizeof(apellido),stdin);
+    apellido[strlen(apellido) - 1] = '\0';
+    posicionEmpleado= empleado_buscarEmpleado(arrayEmpleados,tamArray,nombre,apellido);
+    if (posicionEmpleado>=0)
+    {
+        __fpurge(stdin);
+        printf("\nIngrese nombre: ");
+        fgets(empleadoModificado.nombre,sizeof(empleadoModificado.nombre),stdin);
+        empleadoModificado.nombre[strlen(empleadoModificado.nombre) - 1] = '\0';
+
+        printf("\nIngrese apellido: ");
+        fgets(empleadoModificado.apellido,sizeof(empleadoModificado.apellido),stdin);
+        empleadoModificado.apellido[strlen(empleadoModificado.apellido) - 1] = '\0';
+
+        empleadoModificado.isEmpty = 0;
+        empleadoModificado.idEmpleado = arrayEmpleados[posicionEmpleado].idEmpleado;
+        empleadoModificado.isActive = 1;
+        arrayEmpleados[posicionEmpleado] = empleadoModificado;
+        ret =0;
+    }else
+        {
+            printf("No se a encontrado el Empleado.\n");
+        }
+    return ret;
+}
+
+
+
+
+

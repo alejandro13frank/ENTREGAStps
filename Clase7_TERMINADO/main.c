@@ -7,48 +7,6 @@
 #define LEN_LISTA    100
 
 
-int buscarLibre(char lista[][20],
-                int len,
-                int* pIndex)
-{
-    int i;
-    int ret=-1;
-    for(i=0; i<len ; i++)
-    {
-        if(lista[i][0]=='\0')
-        {
-            *pIndex = i;
-            ret=0;
-            break;
-        }
-    }
-    return ret;
-
-}
-
-int buscarNombre(char* pNombre,
-                 char lista[][20],
-                 int len,
-                 int* pIndex
-)
-{
-    int i;
-    int ret=-1;
-    for(i=0; i<len; i++)
-    {
-        if(strcmp(pNombre,lista[i])==0)
-        {
-            *pIndex = i;
-            ret=0;
-            break;
-        }
-    }
-    return ret;
-
-
-}
-
-
 int main()
 {
     /*int opcion=0;
