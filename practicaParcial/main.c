@@ -29,14 +29,16 @@ int main()
         printf("\n\n1-Alta pantalla");
         printf("\n\n2-Mostrar pantallas");
         printf("\n\n3-Borrar pantallas");
-        printf("\n\n4-Salir\n");
+        printf("\n\n4-Alta publicidad");
+        printf("\n\n5-Mostrar publicidad");
+        printf("\n\n6-Salir\n");
 
         do
         {
             printf("\n\t\tingrese opcion: ");
             scanf("\n%d",&opcion);
         }
-        while (opcion<1 || opcion>4);
+        while (opcion<1 || opcion>5);
             switch (opcion)
             {
                 case 1:
@@ -65,6 +67,22 @@ int main()
                     break;
 
                 case 4:
+                        switch(publicidad_Alta(publicidades,100,))
+                        {
+                            case 0:
+                                printf("dato ingresado correctamente\n\n");
+                                break;
+                            case -1:
+                                printf("dato ingresado INCORRECTAMENTE\n\n");
+                                break;
+                        }
+
+                        break;
+                case 5:
+                    publicidad_mostrarPublicidades(publicidades,100);
+                    break;
+
+                case 6:
                     seguir='f';
                     break;
             }

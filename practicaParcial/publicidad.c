@@ -26,7 +26,7 @@ int publicidad_buscarVacio(Publicidad* publicidades, int tamArray)
 }
 
 int publicidad_Alta(Publicidad* publicidades, int tamArray, int idPantalla)
-{
+{//modificar para que FUNCIONE!!!!!
     int ret=-1;
     int posVacia;
     Publicidad aux_Publicidad;
@@ -157,4 +157,22 @@ int publicidad_listaPorCuit(Publicidad *publicidades,int tamArray,char *cuit)
     }
     return ret;
 }
+
+int publicidad_mostrarPublicidades(Publicidad* publicidades, int tamArray)
+{
+    int i;
+    for (i=0;i<tamArray;i++)
+    {
+        if (!(publicidades[i].isEmpty))
+        {
+            printf("%d pantalla ID: %d \n",i,publicidades[i].idPantalla);
+            printf("   publicidad ID: %d \n",i,publicidades[i].idPublicidad);
+            printf("   publicidad Direccion %s \n",i,publicidades[i].cuit);
+            printf("   publicidad archivo: %s \n",i,publicidades[i].archivoVideo);
+            printf("   pantalla DIAS: %d \n",i,publicidades[i].dias);
+        }
+    }
+    return 0;
+}
+
 

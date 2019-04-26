@@ -25,5 +25,8 @@ int publicidad_inicializarArray(Publicidad* publicidades, int tamArray);
 
 int publicidad_listaPorCuit(Publicidad *publicidades,int tamArray,char *cuit);
 
+int publicidad_mostrarPublicidades(Publicidad* publicidades, int tamArray);
+
+
 
 #endif // PUBLICIDAD_H_INCLUDED
