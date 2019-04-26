@@ -24,7 +24,7 @@ int utn_getNumber(int* pResultado,char *mensaje,char *mensajeError,int minimo,in
                 break;
             }
         }
-    reintentos--;
+        reintentos--;
     }
     }
     return ret;
@@ -40,9 +40,10 @@ int getString(char *resultado, char *mensaje, char *mensajeError, int minimo, in
         minimo<maximo &&
         reintentos>=0)
     {
-    printf("ok1\n");
+
         while (reintentos>0)
         {
+            __fpurge(stdin);
             printf("%s",mensaje);
             fgets(bufferStr,sizeof(bufferStr),stdin);
             bufferStr[strlen(bufferStr)-1] = '\0';
@@ -54,9 +55,8 @@ int getString(char *resultado, char *mensaje, char *mensajeError, int minimo, in
             }
             reintentos--;
             printf("%s\n",mensajeError);
-            //__fpurge(stdin);
+            __fpurge(stdin);
         }
-    printf("ok2\n");
     }
     return ret;
 }

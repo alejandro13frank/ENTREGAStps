@@ -4,7 +4,7 @@
 #include "publicidad.h"
 #include "funciones2.0.h"
 
-int idPublicidad=0;
+static int GenerarID(void);
 
 int publicidad_buscarVacio(Publicidad* publicidades, int tamArray)
 {
@@ -36,13 +36,13 @@ int publicidad_Alta(Publicidad* publicidades, int tamArray, int idPantalla)
 
         if(posVacia!=-1)
         {
-            getString(aux_Publicidad.cuit,"Ingrese el cuit del cliente","cuit incorrecto",1,20,5);
-            getString(aux_Publicidad.archivoVideo,"Ingrese nombre del archivo de video","Archivo de video invalido",1,50,5);
-            utn_getNumber(&(aux_Publicidad.dias),"Ingrese cantidad de dias de puclicidad","Ingrese cantidad valida",1,5,5);
+            getString(aux_Publicidad.cuit,"Ingrese el cuit del cliente: ","cuit incorrecto",1,20,5);
+            getString(aux_Publicidad.archivoVideo,"Ingrese nombre del archivo de video: ","Archivo de video invalido",1,50,5);
+            utn_getNumber(&(aux_Publicidad.dias),"Ingrese cantidad de dias de puclicidad: ","Ingrese cantidad valida",1,1000,5);
 
             aux_Publicidad.isEmpty=0;
             aux_Publicidad.idPantalla = idPantalla;
-            aux_Publicidad.idPublicidad = publicidad_GenerarID(&idPantalla);
+            aux_Publicidad.idPublicidad = GenerarID();
             publicidades[posVacia]=aux_Publicidad;
 
             ret=0;
@@ -136,9 +136,10 @@ int publicidad_inicializarArray(Publicidad* publicidades, int tamArray)
     }
     return ret;
 }
-int publicidad_GenerarID(int *idPublicidad)
+static int GenerarID(void)
 {
-    return (*idPublicidad)++;
+    static int idPublicidad=0;
+    return idPublicidad++;
 }
 int publicidad_listaPorCuit(Publicidad *publicidades,int tamArray,char *cuit)
 {

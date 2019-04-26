@@ -12,12 +12,20 @@ typedef struct
 }Pantalla;
 
 int pantalla_inicializarArray(Pantalla* pantallas, int tamArray);
+
 int pantalla_buscarVacio(Pantalla* pantallas, int tamArray);
+
 int pantalla_Alta(Pantalla* pantallas, int tamArray);
+
 int pantalla_Baja(Pantalla* pantallas, int tamArray);
+
 int pantalla_Modificacion(Pantalla* pantallas, int tamArray);
-int pantalla_buscarPantalla(Pantalla* pantallas, int tamArray, int idPantalla);
+
+int pantalla_buscarIDPantalla(Pantalla* pantallas, int tamArray, int idPantalla);
+
 int pantalla_GenerarID(int *idPantalla);
+
+int pantalla_MostrarPantallas(Pantalla *pantallas,int tamArray);
 
 
 #endif // PANTALLA_H_INCLUDED

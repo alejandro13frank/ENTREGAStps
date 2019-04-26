@@ -3,7 +3,7 @@
 #include <string.h>
 #include "pantalla.h"
 #include "funciones2.0.h"
-int idPantalla = 0;
+static int generarID(void);
 
 int pantalla_inicializarArray(Pantalla* pantallas, int tamArray)
 {
@@ -49,13 +49,13 @@ int pantalla_Alta(Pantalla* pantallas, int tamArray)
 
     if(posVacia!=-1)
     {
-        getString(aux_Pantalla.nombre,"Ingrese el nombre de la pantalla","Nombre de la pantalla incorrecto",1,49,5);
-        getString(aux_Pantalla.direccion,"Ingrese la direccion de la pantalla","Direccion de la pantalla invalida",1,249,5);
-        utn_getNumber(&(aux_Pantalla.precio),"Ingrese el precio de la pantalla","Ingrese un monto valido",1,5,5);   //&(aux_Pantalla.precio) asi se nota como puntero en el caso de ser una variable primitiva tipo int o float.
-        utn_getNumber(&(aux_Pantalla.tipo),"Ingrese 0 para led, 1 para lcd", "Ingrese un tipo valido",0,1,5);
+        getString(aux_Pantalla.nombre,"Ingrese el nombre de la pantalla: ","Nombre de la pantalla incorrecto",1,49,5);
+        getString(aux_Pantalla.direccion,"Ingrese la direccion de la pantalla: ","Direccion de la pantalla invalida",1,249,5);
+        utn_getNumber(&(aux_Pantalla.precio),"Ingrese el precio de la pantalla: ","Ingrese un monto valido",1,30000,5);   //&(aux_Pantalla.precio) asi se nota como puntero en el caso de ser una variable primitiva tipo int o float.
+        utn_getNumber(&(aux_Pantalla.tipo),"Ingrese 0 para led, 1 para lcd: ", "Ingrese un tipo valido",0,1,5);
 
         aux_Pantalla.isEmpty=0;
-        aux_Pantalla.idPantalla = pantalla_GenerarID(&idPantalla);
+        aux_Pantalla.idPantalla = generarID();
         pantallas[posVacia]=aux_Pantalla;//como el auxiliar es solo variable para una pantalla, no necesita asignarle posicion.
 
         ret=0;
@@ -108,9 +108,10 @@ int pantalla_Baja(Pantalla* pantallas, int tamArray)
   return ret;
 }
 
-int pantalla_GenerarID(int *idPantalla)
+static int generarID(void)
 {
-    return (*idPantalla)++;
+    static int idPantalla;
+    return idPantalla++;
 }
 
 int pantalla_Modificacion(Pantalla* pantallas, int tamArray)
@@ -125,10 +126,10 @@ int pantalla_Modificacion(Pantalla* pantallas, int tamArray)
         posicionPantalla=pantalla_buscarPantalla(pantallas,tamArray,idPantalla);
         if (posicionPantalla!=-1)
         {
-            getString(aux_Pantalla.nombre,"Ingrese el nombre de la pantalla","Nombre de la pantalla incorrecto",1,49,5);
-            getString(aux_Pantalla.direccion,"Ingrese la direccion de la pantalla","Direccion de la pantalla invalida",1,249,5);
-            utn_getNumber(&(aux_Pantalla.precio),"Ingrese el precio de la pantalla","Ingrese un monto valido",1,5,5);   //&(aux_Pantalla.precio) asi se nota como puntero en el caso de ser una variable primitiva tipo int o float.
-            utn_getNumber(&(aux_Pantalla.tipo),"Ingrese 0 para led, 1 para lcd", "Ingrese un tipo valido",0,1,5);
+            getString(aux_Pantalla.nombre,"Ingrese el nombre de la pantalla: ","Nombre de la pantalla incorrecto",1,49,5);
+            getString(aux_Pantalla.direccion,"Ingrese la direccion de la pantalla: ","Direccion de la pantalla invalida",1,249,5);
+            utn_getNumber(&(aux_Pantalla.precio),"Ingrese el precio de la pantalla: ","Ingrese un monto valido",1,5,5);   //&(aux_Pantalla.precio) asi se nota como puntero en el caso de ser una variable primitiva tipo int o float.
+            utn_getNumber(&(aux_Pantalla.tipo),"Ingrese 0 para led, 1 para lcd: ", "Ingrese un tipo valido",0,1,5);
             aux_Pantalla.isEmpty=0;
             aux_Pantalla.idPantalla = idPantalla;
             pantallas[posicionPantalla]=aux_Pantalla;
@@ -140,5 +141,22 @@ int pantalla_Modificacion(Pantalla* pantallas, int tamArray)
     }
 
   return ret;
+}
+
+int pantalla_MostrarPantallas(Pantalla *pantallas,int tamArray)
+{
+    int i;
+    for (i=0;i<tamArray;i++)
+    {
+        if (!(pantallas[i].isEmpty))
+        {
+            printf("%d pantalla ID: %d \n",i,pantallas[i].idPantalla);
+            printf("%d pantalla direccion %s \n",i,pantallas[i].direccion);
+            printf("%d pantalla nombre: %s \n",i,pantallas[i].nombre);
+            printf("%d pantalla TIPO: %d \n",i,pantallas[i].tipo);
+            printf("%d pantalla precio: %d \n",i,pantallas[i].tipo);
+        }
+    }
+    return 0;
 }
 

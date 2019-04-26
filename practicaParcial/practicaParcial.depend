@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1556238440 source:/home/alumno/Documentos/ENTREGAStps/practicaParcial/funciones2.0.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"funciones2.0.h"
+
+1555537867 /home/alumno/Documentos/ENTREGAStps/practicaParcial/funciones2.0.h
+
+1556237932 source:/home/alumno/Documentos/ENTREGAStps/practicaParcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones2.0.h"
+	"publicidad.h"
+	"pantalla.h"
+
+1556239307 /home/alumno/Documentos/ENTREGAStps/practicaParcial/publicidad.h
+
+1556238660 /home/alumno/Documentos/ENTREGAStps/practicaParcial/pantalla.h
+
+1556238906 source:/home/alumno/Documentos/ENTREGAStps/practicaParcial/pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"funciones2.0.h"
+
