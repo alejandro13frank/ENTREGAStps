@@ -8,6 +8,7 @@ typedef struct
     int dias;
     int isEmpty; ///1vacio - 0ocupado
     int idPublicidad; ///clave unica de identidad univoca
+    int idPantalla;
 }Publicidad;
 
 int pub_initPublicidad(Publicidad* pPublicidad,int len);
@@ -19,4 +20,7 @@ int pub_findPubById(Publicidad* pPublicidad, int len, int idE);
 int pub_findFree(Publicidad* pPublicidad, int len);
 
 int pub_getID (Publicidad* pPublicidad,int len,char* msgE,int tries);
+
+void pub_printContrataciones2(Publicidad* lista,int len);
+
 #endif // PUBLICIDAD_H_INCLUDED

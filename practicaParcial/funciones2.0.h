@@ -7,3 +7,30 @@ int getString(char *resultado, char *mensaje, char *mensajeError, int minimo, in
 int utn_getNumber(int* pResultado,char *mensaje,char *mensajeError,int minimo,int maximo,int reintentos);
 
 #endif // FUNCIONES2_0_INCLUDED
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+            Codeado por Alejandro Frank
+******************************************************************************/

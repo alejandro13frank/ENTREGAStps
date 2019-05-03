@@ -64,7 +64,7 @@ int publicidad_Baja(Publicidad* publicidades, int tamArray)
     if (publicidades!=NULL && tamArray>0)
     {
         getString(cuit,"ingrese cuit de cliente para dar BAJA: ","cuit invalido",1,20,3);
-        publicidad_listaPorCuit(publicidades,tamArray,cuit);
+        publicidad_listaPantallaPorCuit(publicidades,tamArray,cuit);
         utn_getNumber(&idPublicidad,"Seleccione un ID de Pantalla a borrar: ","ID invalido",0,30000,3);
         posicionPublicidad=publicidad_buscarPublicidad(publicidades,tamArray,idPublicidad);
         if (posicionPublicidad!=-1)
@@ -88,7 +88,7 @@ int publicidad_Modificacion(Publicidad* publicidades, int tamArray)
     if (publicidades!=NULL && tamArray>0)
     {
         getString(cuit,"ingrese cuit de cliente a MODIFICAR: ","cuit invalido",1,20,3);
-        publicidad_listaPorCuit(publicidades,tamArray,cuit);
+        publicidad_listaPantallaPorCuit(publicidades,tamArray,cuit);
         utn_getNumber(&idPublicidad,"Seleccione un ID de Pantalla: ","ID invalido",0,30000,3);
         posicionPublicidad=publicidad_buscarPublicidad(publicidades,tamArray,idPublicidad);
         if (posicionPublicidad!=-1)
@@ -141,7 +141,7 @@ static int GenerarID(void)
     static int idPublicidad=0;
     return idPublicidad++;
 }
-int publicidad_listaPorCuit(Publicidad *publicidades,int tamArray,char *cuit)
+int publicidad_listaPantallaPorCuit(Publicidad *publicidades,int tamArray,char *cuit)
 {
     int i;
     int ret =0;
@@ -158,21 +158,83 @@ int publicidad_listaPorCuit(Publicidad *publicidades,int tamArray,char *cuit)
     return ret;
 }
 
-int publicidad_mostrarPublicidades(Publicidad* publicidades, int tamArray)
+int publicidad_mostrarPublicidades(Publicidad* publicidades, Pantalla *pantallas, int tamArrayPub, int tamArrayPub)
 {
     int i;
+    int posPantalla;
     for (i=0;i<tamArray;i++)
     {
+	posPantalla = pantalla_buscarIDporpantalla(pantallas,tamArrayPan,publicidades[i].idPantallas)
         if (!(publicidades[i].isEmpty))
         {
             printf("%d pantalla ID: %d \n",i,publicidades[i].idPantalla);
-            printf("   publicidad ID: %d \n",i,publicidades[i].idPublicidad);
-            printf("   publicidad Direccion %s \n",i,publicidades[i].cuit);
-            printf("   publicidad archivo: %s \n",i,publicidades[i].archivoVideo);
-            printf("   pantalla DIAS: %d \n",i,publicidades[i].dias);
+            printf("   publicidad ID: %d \n",publicidades[i].idPublicidad);
+            printf("   publicidad Direccion %s \n",publicidades[i].cuit);
+            printf("   publicidad archivo: %s \n",publicidades[i].archivoVideo);
+            printf("   pantalla DIAS: %d \n",publicidades[i].dias);
+	    printf("   pantalla nombre: %d \n",pantallas[posPantalla].nombre);
+
         }
     }
     return 0;
 }
 
+int publicidad_mostrarPorDias(Publicidad* publicidades, Pantalla *pantallas, int tamArrayPub, int tamArrayPan, int valor)
+{
+    int i;
+    int posPantalla;
+    for (i=0;i<tamArrayPub;i++)
+    {
+        if (!(publicidades[i].isEmpty))
+        {
+	    if (publicidades[i].dias<valor)
+	    {
+	   	posPantalla = pantalla_buscarIDporpantalla(pantallas,tamArrayPan,publicidades[i].idPantallas);
+            	printf("%d pantalla ID: %d \n",i,publicidades[i].idPantalla);
+           	printf("   publicidad ID: %d \n",publicidades[i].idPublicidad);
+          	printf("   publicidad precio: %d \n",publicidades[i].precio);
+           	printf("   pantalla DIAS: %d \n",publicidades[i].dias);
+	   	printf("   pantalla nombre: %d \n",pantallas[posPantalla].nombre);
+		printf("   pantalla PRECIO X DIAS: %d \n",publicidades[i].dias*pantallas[i].precio);
+
+	    }
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+            Codeado por Alejandro Frank
+******************************************************************************/
 

@@ -23,10 +23,26 @@ int publicidad_buscarPublicidad(Publicidad* publicidades, int tamArray, int idPu
 
 int publicidad_inicializarArray(Publicidad* publicidades, int tamArray);
 
-int publicidad_listaPorCuit(Publicidad *publicidades,int tamArray,char *cuit);
+int publicidad_listaPantallaPorCuit(Publicidad *publicidades,int tamArray,char *cuit);
 
 int publicidad_mostrarPublicidades(Publicidad* publicidades, int tamArray);
 
 
 
 #endif // PUBLICIDAD_H_INCLUDED
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+            Codeado por Alejandro Frank
+******************************************************************************/

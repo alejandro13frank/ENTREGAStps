@@ -28,4 +28,40 @@ int pantalla_GenerarID(int *idPantalla);
 int pantalla_MostrarPantallas(Pantalla *pantallas,int tamArray);
 
 
+
+
 #endif // PANTALLA_H_INCLUDED
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+            Codeado por Alejandro Frank
+******************************************************************************/

@@ -20,7 +20,7 @@ int main()
     while(opcion!=6)
     {
         getIntInRange(&opcion,"\n1)Alta de pantalla\n2)Modificar datos de pantalla\n3)Baja de pantalla\n"
-                      "4)Contratar Publicidad\n5)Mostrar Pantallas\n6)Salir\n\n    INGRESE OPCION: ","ERROR\n",1,6,3);
+                      "4)Contratar Publicidad\n5)Mostrar Pantallas\n6)Salir8)opcion8\n\n    INGRESE OPCION: ","ERROR\n",1,999999,3);
         switch(opcion)
         {
             case 1:
@@ -68,6 +68,7 @@ int main()
                     {
                         printf("\n----La BAJA se realizo con exito!----\n");
                     }
+                    //pub_removeContratacionesPorIdPantalla(Marketing,LEN,idPantalla);
                 }
                 else
                 {
@@ -100,7 +101,13 @@ int main()
                 if(flag)
                 {
                     pan_printPantalla(visores,LEN_LISTA);
+                    pub_printContrataciones2(Marketing,LEN_LISTA);
                 }
+                break;
+            }
+            case 8:
+            {
+                pub_printContrataciones(Marketing,visores,LEN_LISTA,LEN_LISTA);
                 break;
             }
         }

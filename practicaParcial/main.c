@@ -67,7 +67,7 @@ int main()
                     break;
 
                 case 4:
-                        switch(publicidad_Alta(publicidades,100,))
+                        switch(publicidad_Alta(publicidades,100,10))
                         {
                             case 0:
                                 printf("dato ingresado correctamente\n\n");
@@ -89,3 +89,34 @@ int main()
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+            Codeado por Alejandro Frank
+******************************************************************************/

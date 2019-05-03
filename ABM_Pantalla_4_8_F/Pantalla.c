@@ -281,3 +281,26 @@ static int generarId(void)
     static int idPant=0;
     return idPant++;
 }
+
+
+void printPantallasConPrecioMenorA(
+                            Pantalla* lista,
+                            int len,
+                            int valor
+                            )
+{
+    int i;
+    for(i=0; i<len;i++)
+    {
+        if(lista[i].isEmpty==0)
+        {
+            if(lista[i].precio<valor)
+            {
+                printf("%d %s\n",lista[i].idPantalla,
+                                lista[i].nombre
+                            );
+            }
+        }
+    }
+
+}
