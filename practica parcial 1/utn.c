@@ -231,12 +231,12 @@ int isValidFloatNumber(char* stringRecibido)
     return retorno;
 }
 //*************************************************************
-int utn_getTelefono(char* msg, char* msgError, int minSize, int maxSize, int min, int max, int reintentos, char* input)
+int utn_getTelefono(char* msg, char* msgError, int minSize, int maxSize, int reintentos, char* input)
 {
     int retorno=-1;
     char bufferStr[maxSize];
 
-    if(msg!=NULL && msgError!=NULL && minSize<maxSize && min<max && reintentos>=0 && input!=NULL)
+    if(msg!=NULL && msgError!=NULL && minSize<maxSize && reintentos>=0 && input!=NULL)
     {
         do
         {
@@ -576,4 +576,9 @@ int isValidChar(char charRecibido)
     if(charRecibido<'A' || (charRecibido>'Z' && charRecibido<'a') || charRecibido>'z')
         retorno=0;
     return retorno;
+}
+
+int utn_getSexo(char* msg,char* msgError,char* resultado)
+{
+    return 0;
 }

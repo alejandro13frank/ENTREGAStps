@@ -168,9 +168,12 @@ int socio_alta(Socio array[], int size, int* contadorID)                        
             //utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,1,1,&array[posicion].varInt);           //mensaje + cambiar campo varInt
             //utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat);             //mensaje + cambiar campo varFloat
             utn_getName("getName\n: ","\nError",1,TEXT_SIZE,1,array[posicion].nombre);                      //mensaje + cambiar campo nombre
-            utn_getTexto("getTexto\n: ","\nError",1,TEXT_SIZE,1,array[posicion].apellido);                 //mensaje + cambiar campo apellido
-            printf("\n Posicion: %d\n ID: %d\n nombre: %s\n apellido: %s",
-                   posicion, array[posicion].idUnico,array[posicion].nombre,array[posicion].apellido);
+            utn_getTexto("getTexto\n: ","\nError",1,TEXT_SIZE,1,array[posicion].apellido);
+            utn_getSexo("getTexto\n: ","\nError",&array[posicion].sexo);
+            utn_getTelefono("getTelefono\n: ","\nError",20,30,1,array[posicion].telefono);
+            utn_getEmail("getEmai\n: ","\nError", 20,30,1,array[posicion].email);               //mensaje + cambiar campo apellido
+            printf("\n Posicion: %d\n ID: %d\n nombre: %s\n apellido: %s\n Sexo: %c\n Telefono: %s\n EMail: %s",
+                   posicion, array[posicion].idUnico,array[posicion].nombre,array[posicion].apellido,array[posicion].sexo, array[posicion].telefono, array[posicion].email);
             retorno=0;
         }
     }
@@ -192,6 +195,7 @@ int socio_baja(Socio array[], int sizeArray)                                    
     int id;
     if(array!=NULL && sizeArray>0)
     {
+        socio_listar(array,sizeArray);
         utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);          //cambiar si no se busca por ID
         if(socio_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
         {
@@ -201,8 +205,6 @@ int socio_baja(Socio array[], int sizeArray)                                    
         {
             array[posicion].isEmpty=1;
             array[posicion].idUnico=0;                                                                   //cambiar campo id
-            //array[posicion].varInt=0;                                                               //cambiar campo varInt
-           // array[posicion].varFloat=0;                                                             //cambiar campo varFloat
             strcpy(array[posicion].nombre,"");                                                   //cambiar campo nombre
             strcpy(array[posicion].apellido,"");                                               //cambiar campo apellido
             retorno=0;
@@ -275,16 +277,19 @@ int socio_modificar(Socio array[], int sizeArray)                               
                 switch(opcion)
                 {
                     case 'A':
-                        //utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,1,1,&array[posicion].varInt);           //mensaje + cambiar campo varInt
+                        utn_getTelefono("\n: ","\nError",20,30,1,array[posicion].telefono);           //mensaje + cambiar campo varInt
                         break;
                     case 'B':
-                        //utn_getFloat("\n: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat);             //mensaje + cambiar campo varFloat
+                        utn_getSexo("\n: ","\nError",&array[posicion].sexo);             //mensaje + cambiar campo varFloat
                         break;
                     case 'C':
                         utn_getName("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].nombre);                      //mensaje + cambiar campo nombre
                         break;
                     case 'D':
-                        utn_getTexto("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].apellido);             //mensaje + cambiar campo apellido
+                        utn_getName("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].apellido);             //mensaje + cambiar campo apellido
+                        break;
+                    case 'E':
+                        utn_getEmail("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].email);             //mensaje + cambiar campo apellido
                         break;
                     case 'S':
                         break;

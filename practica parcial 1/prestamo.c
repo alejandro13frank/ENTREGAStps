@@ -149,7 +149,7 @@ int prestamo_buscarString(Prestamo array[], int size, char* valorBuscado, int* i
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no hay posiciones vacias] - (0) si se agrega un nuevo elemento exitosamente
 *
 */
-int prestamo_alta(Prestamo array[], int size, int* contadorID)                          //cambiar prestamo
+int prestamo_alta(Prestamo array[],Socio arraySocio[],Libro arraySocio[], int size,int sizeLibro,int sizeSocio, int* contadorID)                          //cambiar prestamo
 {
     int retorno=-1;
     int posicion;
@@ -164,10 +164,8 @@ int prestamo_alta(Prestamo array[], int size, int* contadorID)                  
             (*contadorID)++;
             array[posicion].idUnico=*contadorID;                                                       //campo ID
             array[posicion].isEmpty=0;
-            utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,1,1,&array[posicion].codigoDeLibro);           //mensaje + cambiar campo codigoDeLibro
-            //utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat);             //mensaje + cambiar campo varFloat
-            //utn_getName("getName\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString);                      //mensaje + cambiar campo varString
-            //utn_getTexto("getTexto\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varLongString);                 //mensaje + cambiar campo varLongString
+            CARGAR VALORES CON IF
+
             printf("\n Posicion: %d\n ID: %d\n codigoDeLibro: %d",
                    posicion, array[posicion].idUnico,array[posicion].codigoDeLibro);
             retorno=0;
