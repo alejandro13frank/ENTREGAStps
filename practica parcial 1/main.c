@@ -18,7 +18,7 @@ int main()
     do
     {
         utn_getUnsignedInt("\n\n1) Alta \n2) Modificar \n3) Baja \n4) Listar \n5) Ordenar \n6) Salir\n",                   //cambiar
-                      "\nError",1,sizeof(int),1,11,1,&opcion);
+                      "\nError",1,sizeof(int),1,&opcion);
         switch(opcion)
         {
             case 1: //Alta

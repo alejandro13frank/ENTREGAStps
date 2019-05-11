@@ -193,7 +193,7 @@ int autor_baja(Autor array[], int sizeArray)                                    
     if(array!=NULL && sizeArray>0)
     {
         autor_listar(array,sizeArray);
-        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);//cambiar si no se busca por ID
+        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,&id);//cambiar si no se busca por ID
         if(autor_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
         {
             printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID
@@ -262,7 +262,7 @@ int autor_modificar(Autor array[], int sizeArray)                               
     if(array!=NULL && sizeArray>0)
     {
         autor_listar(array,sizeArray);
-        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);         //cambiar si no se busca por ID
+        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,&id);         //cambiar si no se busca por ID
         if(autor_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
         {
             printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID

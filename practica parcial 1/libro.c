@@ -1,8 +1,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "utn.h"
 #include "autor.h"
+#include "utn.h"
 #include "libro.h" //cambiar por nombre entidad
 
 /** \brief  To indicate that all position in the array are empty,
@@ -192,7 +192,7 @@ int libro_baja(Libro array[], int sizeArray)                                    
     if(array!=NULL && sizeArray>0)
     {
         libro_listar(array,sizeArray);
-        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);          //cambiar si no se busca por ID
+        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,&id);          //cambiar si no se busca por ID
         if(libro_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
         {
             printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID
@@ -263,7 +263,7 @@ int libro_modificar(Libro array[],Autor arrayAutores[], int sizeArray, int sizeA
     if(array!=NULL && sizeArray>0)
     {
         libro_listar(array,sizeArray);
-        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);         //cambiar si no se busca por ID
+        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,&id);         //cambiar si no se busca por ID
         if(libro_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
         {
             printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID
@@ -279,7 +279,7 @@ int libro_modificar(Libro array[],Autor arrayAutores[], int sizeArray, int sizeA
                 {
                     case 'A':
                         autor_listar(arrayAutores,sizeAutores);
-                        utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,1,1,&bufferID);
+                        utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,&bufferID);
                         if(autor_buscarID(arrayAutores,sizeArray,bufferID,&posicionAux)==-1)                                   //cambiar si no se busca por ID
                             {
                                 printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID

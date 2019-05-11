@@ -187,12 +187,12 @@ int isValidSignedNumber(char* stringRecibido)
     return retorno;
 }
 //*******************************************************
-int utn_getFloat(char* msg, char* msgError, int minSize, int maxSize, int min, int max, int reintentos, float* input)
+int utn_getFloat(char* msg, char* msgError, int minSize, int maxSize, int reintentos, float* input)
 {
     int retorno=-1;
     char bufferStr[maxSize];
 
-    if(msg!=NULL && msgError!=NULL && minSize<maxSize && min<max && reintentos>=0 && input!=NULL)
+    if(msg!=NULL && msgError!=NULL && minSize<maxSize && reintentos>=0 && input!=NULL)
     {
         do
         {

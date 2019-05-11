@@ -9,7 +9,7 @@ int isValidNumber(char* stringRecibido);
 int utn_getSignedInt(char* msg, char* msgError, int minSize, int maxSize, int reintentos, int* input);
 int isValidSignedNumber(char* stringRecibido);
 
-int utn_getFloat(char* msg, char* msgError, int minSize, int maxSize, int min, int max, int reintentos, float* input);
+int utn_getFloat(char* msg, char* msgError, int minSize, int maxSize, int reintentos, float* input);
 int isValidFloatNumber(char* stringRecibido);
 
 int utn_getTelefono(char* msg, char* msgError, int minSize, int maxSize, int reintentos, char* input);
@@ -33,3 +33,4 @@ int isValidAlphanumeric(char* stringRecibido);
 int utn_getChar(char* msg, char* msgError, int min, int max, int reintentos, char* resultado);
 int isValidChar(char charRecibido);
 int utn_getSexo(char* msg,char* msgError,char* resultado);
+//
