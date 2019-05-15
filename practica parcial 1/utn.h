@@ -1,3 +1,6 @@
+#ifndef UTN_H_INCLUDED
+#define UTN_H_INCLUDED
+
 int getString(char* msg, char* msgError, int min, int max, int* reintentos, char* resultado);
 
 int utn_getName(char* msg,char* msgError,int min,int max,int reintentos,char* resultado);
@@ -33,3 +36,4 @@ int isValidAlphanumeric(char* stringRecibido);
 int utn_getChar(char* msg, char* msgError, int min, int max, int reintentos, char* resultado);
 int isValidChar(char charRecibido);
 int utn_getSexo(char* msg,char* msgError,char* resultado);
+#endif // UTN_H_INCLUDED

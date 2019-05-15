@@ -15,7 +15,7 @@ int main()
     int posicionAux;
     Employee arrayEmployee[LEN_ARRAY];
     employee_Inicializar(arrayEmployee,LEN_ARRAY);
-    Employee employeeAux;
+    Employee employeeAux[1];
     do
     {
         utn_getUnsignedInt("\n\n1) Alta \n2) Modificar \n3) Baja \n4) Listar \n5) Ordenar y listar \n6) Informes \n7) Salir\n",
@@ -29,7 +29,9 @@ int main()
                 }else
                 {
                     employee_obtenerDatos(employeeAux,&contadorIdemployee);
-                    employee_addEmployee(arrayEmployee,LEN_ARRAY,employeeAux.id,employeeAux.name,employeeAux.lastName,employeeAux.salary,employeeAux.sector);
+                    printf("\n nombre : %s",employeeAux[0].name);
+                    employee_addEmployee(arrayEmployee,LEN_ARRAY,employeeAux[0].id,employeeAux[0].name,employeeAux[0].lastName,employeeAux[0].salary,employeeAux[0].sector);
+                    printf("\n nombre : %s",arrayEmployee[0].name);
                 }
              break;
 
@@ -95,6 +97,6 @@ int main()
                 printf("\nOpcion no valida");
         }
     }
-    while(opcion!=6);
+    while(opcion!=7);
     return 0;
 }

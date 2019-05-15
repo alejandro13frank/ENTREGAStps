@@ -16,7 +16,6 @@ typedef struct
 }Prestamo;
 
 
-#endif // PRESTAMO_H_INCLUDED
 
 int prestamo_Inicializar(Prestamo array[], int size);                                    //cambiar prestamo
 int prestamo_buscarEmpty(Prestamo array[], int size, int* posicion);                    //cambiar prestamo
@@ -29,5 +28,6 @@ int prestamo_bajaValorRepetidoInt(Prestamo array[], int sizeArray, int valorBusc
 int prestamo_modificar(Prestamo array[], int sizeArray);                                //cambiar prestamo
 int prestamo_ordenarPorString(Prestamo array[],int size);                              //cambiar prestamo
 int prestamo_listar(Prestamo array[], int size);                      //cambiar prestamo
+#endif // PRESTAMO_H_INCLUDED
 
 

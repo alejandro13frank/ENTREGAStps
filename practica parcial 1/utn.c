@@ -35,7 +35,7 @@ int getString(char* msg, char* msgError, int min, int max, int* reintentos, char
         do
         {
             printf("%s",msg);   //no poner salto de linea, se va a pasar en el mensaje por valor
-            //fflush(stdin);
+            fflush(stdin);
             fgets(bufferStr,sizeof(bufferStr),stdin);
             bufferStr[strlen(bufferStr)-1]='\0';
 
@@ -99,7 +99,7 @@ int isValidName(char* stringRecibido)   //si fuera un numero podrìa necesitar p
 }
 
 //-----------------------------------------
-int utn_getUnsignedInt(  char* msg,char* msgError,int minSize,int maxSize,int reintentos,int* input)
+int utn_getUnsignedInt(  char* msg,char* msgError,int minSize,int maxSize,int reintentos,int* input) // int min,int max
 {
     int retorno=-1;
     char bufferStr[maxSize];
@@ -108,21 +108,19 @@ int utn_getUnsignedInt(  char* msg,char* msgError,int minSize,int maxSize,int re
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&& (isValidNumber(bufferStr)==1)) //==0 sin errores !0
             {
-                if(isValidNumber(bufferStr)==1)
-                {
-                    *input=atoi(bufferStr);     // unsigned long int strtoul(const char *str, char **end, int base)?
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
+                *input=atoi(bufferStr); //modificar para que obtenga rangos
+                retorno=0;
+                break;
+            }
+            else
+            {
+                    printf("\n%s 2",msgError);
                     reintentos--;
-                }
             }
         }
+
         while(reintentos>=0);
     }
     return retorno;
@@ -152,19 +150,16 @@ int utn_getSignedInt(char* msg, char* msgError, int minSize, int maxSize, int re
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr) && isValidSignedNumber(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidSignedNumber(bufferStr)==1)
-                {
-                    *input=atoi(bufferStr); // atoi array to int
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                *input=atoi(bufferStr); // atoi array to int
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -196,19 +191,16 @@ int utn_getFloat(char* msg, char* msgError, int minSize, int maxSize, int min, i
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&&isValidFloatNumber(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidFloatNumber(bufferStr)==1)
-                {
-                    *input=atof(bufferStr); // atof array to float
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                *input=atof(bufferStr); // atof array to float
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -240,19 +232,16 @@ int utn_getTelefono(char* msg, char* msgError, int minSize, int maxSize, int rei
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&&isValidTelephone(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidTelephone(bufferStr)==1)
-                {
-                    strncpy(input,bufferStr,maxSize);
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                strncpy(input,bufferStr,maxSize);
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -286,19 +275,16 @@ int utn_getDNI(char* msg, char* msgError, int minSize, int maxSize, int reintent
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&&isValidDNI(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidDNI(bufferStr)==1)
-                {
-                    strncpy(input,bufferStr,maxSize);
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                strncpy(input,bufferStr,maxSize);
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -333,19 +319,16 @@ int utn_getCUIT(char* msg, char* msgError, int reintentos, char* input)
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&&isValidCUIT(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidCUIT(bufferStr)==1)
-                {
-                    strncpy(input,bufferStr,maxSize);
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                strncpy(input,bufferStr,maxSize);
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -412,19 +395,16 @@ int utn_getEmail(char* msg, char* msgError, int minSize, int maxSize, int reinte
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&&isValidEmail(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidEmail(bufferStr)==1)
-                {
-                    strncpy(input,bufferStr,maxSize);
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                strncpy(input,bufferStr,maxSize);
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -458,19 +438,16 @@ int utn_getTexto(char* msg, char* msgError, int minSize, int maxSize, int reinte
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&&isValidTexto(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidTexto(bufferStr)==1)
-                {
-                    strncpy(input,bufferStr,maxSize);
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                strncpy(input,bufferStr,maxSize);
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -503,19 +480,16 @@ int utn_getAlfanumerico(char* msg, char* msgError, int minSize, int maxSize, int
     {
         do
         {
-            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)&&isValidAlphanumeric(bufferStr)==1) //==0 sin errores !0
             {
-                if(isValidAlphanumeric(bufferStr)==1)
-                {
-                    strncpy(input,bufferStr,maxSize);
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                strncpy(input,bufferStr,maxSize);
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);
@@ -549,20 +523,17 @@ int utn_getChar(char* msg, char* msgError, int min, int max, int reintentos, cha
     {
         do
         {
-            if(!getString(msg,msgError,1,3,&reintentos,bufferChar)) //==0
+            if(!getString(msg,msgError,1,3,&reintentos,bufferChar)&&isValidChar(bufferChar[0])==1) //==0
             {
-                if(isValidChar(bufferChar[0])==1)
-                {
-                    printf("OK");
-                    *resultado=bufferChar[0];
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s 2",msgError);
-                    reintentos--;
-                }
+                printf("OK");
+                *resultado=bufferChar[0];
+                retorno=0;
+                break;
+            }
+            else
+            {
+                printf("%s 2",msgError);
+                reintentos--;
             }
         }
         while(reintentos>=0);

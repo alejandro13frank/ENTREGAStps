@@ -1,9 +1,11 @@
 #include <string.h>
+#include "autor.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "autor.h"
+
+#include "libro.h"
 #include "utn.h"
-#include "libro.h" //cambiar por nombre entidad
+
 
 /** \brief  To indicate that all position in the array are empty,
 *          this function put the flag (isEmpty) in TRUE in all

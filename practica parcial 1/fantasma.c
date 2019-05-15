@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
-#include "fantasma.h" //cambiar por nombre entidad
+#include "fantasma.h"
 
 
 /** \brief  To indicate that all position in the array are empty,
@@ -13,7 +13,7 @@
 * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
 *
 */
-int fantasma_Inicializar(Fantasma array[], int size)                                    //cambiar fantasma
+int fantasma_Inicializar(Fantasma array[], int size)
 {
     int retorno=-1;
     if(array!= NULL && size>0)
@@ -37,7 +37,7 @@ int fantasma_Inicializar(Fantasma array[], int size)                            
 * \return int Return (-1) si no encuentra un lugar vacio o Error [Invalid length or NULL pointer] - (0) si encuentra una posicion vacia
 *
 */
-int fantasma_buscarEmpty(Fantasma array[], int size, int* posicion)                    //cambiar fantasma
+int fantasma_buscarEmpty(Fantasma array[], int size, int* posicion)
 {
     int retorno=-1;
     int i;
@@ -63,7 +63,7 @@ int fantasma_buscarEmpty(Fantasma array[], int size, int* posicion)             
 * \return int Return (-1) si no encuentra el valor buscado o Error [Invalid length or NULL pointer] - (0) si encuentra el valor buscado
 *
 */
-int fantasma_buscarID(Fantasma array[], int size, int valorBuscado, int* posicion)                    //cambiar fantasma
+int fantasma_buscarID(Fantasma array[], int size, int valorBuscado, int* posicion)
 {
     int retorno=-1;
     int i;
@@ -73,7 +73,7 @@ int fantasma_buscarID(Fantasma array[], int size, int valorBuscado, int* posicio
         {
             if(array[i].isEmpty==1)
                 continue;
-            else if(array[i].idUnico==valorBuscado)                                                   //cambiar campo ID
+            else if(array[i].idUnico==valorBuscado)
             {
                 retorno=0;
                 *posicion=i;
@@ -90,7 +90,7 @@ int fantasma_buscarID(Fantasma array[], int size, int valorBuscado, int* posicio
 * \return int Return (-1) si no encuentra el valor buscado o Error [Invalid length or NULL pointer] - (0) si encuentra el valor buscado
 *
 */
-int fantasma_buscarInt(Fantasma array[], int size, int valorBuscado, int* posicion)                    //cambiar fantasma
+int fantasma_buscarInt(Fantasma array[], int size, int valorBuscado, int* posicion)
 {
     int retorno=-1;
     int i;
@@ -100,7 +100,7 @@ int fantasma_buscarInt(Fantasma array[], int size, int valorBuscado, int* posici
         {
             if(array[i].isEmpty==1)
                 continue;
-            else if(array[i].varInt==valorBuscado)                                                   //cambiar campo varInt
+            else if(array[i].varInt1==valorBuscado)
             {
                 retorno=0;
                 *posicion=i;
@@ -119,7 +119,7 @@ int fantasma_buscarInt(Fantasma array[], int size, int valorBuscado, int* posici
 * \return int Return (-1) si no encuentra el valor buscado o Error [Invalid length or NULL pointer] - (0) si encuentra el valor buscado
 *
 */
-int fantasma_buscarString(Fantasma array[], int size, char* valorBuscado, int* indice)                    //cambiar fantasma
+int fantasma_buscarString(Fantasma array[], int size, char* valorBuscado, int* indice)
 {
     int retorno=-1;
     int i;
@@ -129,7 +129,7 @@ int fantasma_buscarString(Fantasma array[], int size, char* valorBuscado, int* i
         {
             if(array[i].isEmpty==1)
                 continue;
-            else if(strcmp(array[i].varString,valorBuscado)==0)                                        //cambiar campo varString
+            else if(strcmp(array[i].varString1,valorBuscado)==0)
             {
                 *indice=i;
                 retorno=0;
@@ -149,27 +149,35 @@ int fantasma_buscarString(Fantasma array[], int size, char* valorBuscado, int* i
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no hay posiciones vacias] - (0) si se agrega un nuevo elemento exitosamente
 *
 */
-int fantasma_alta(Fantasma array[], int size, int* contadorID)                          //cambiar fantasma
+int fantasma_alta(Fantasma array[], int size, int* contadorID)
 {
     int retorno=-1;
     int posicion;
     if(array!=NULL && size>0 && contadorID!=NULL)
     {
-        if(fantasma_buscarEmpty(array,size,&posicion)==-1)                          //cambiar fantasma
+        if(fantasma_buscarEmpty(array,size,&posicion)==-1)
         {
             printf("\nNo hay lugares vacios");
         }
         else
         {
             (*contadorID)++;
-            array[posicion].idUnico=*contadorID;                                                       //campo ID
+            array[posicion].idUnico=*contadorID;
             array[posicion].isEmpty=0;
-            utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,&array[posicion].varInt);           //mensaje + cambiar campo varInt
-            utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat);             //mensaje + cambiar campo varFloat
-            utn_getName("getName\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString);                      //mensaje + cambiar campo varString
-            utn_getTexto("getTexto\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varLongString);                 //mensaje + cambiar campo varLongString
-            printf("\n Posicion: %d\n ID: %d\n varInt: %d\n varFloat: %f\n varString: %s\n varLongString: %s",
-                   posicion, array[posicion].idUnico,array[posicion].varInt,array[posicion].varFloat,array[posicion].varString,array[posicion].varLongString);
+            utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,&array[posicion].varInt1);
+            utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,&array[posicion].varInt2);
+            utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,&array[posicion].varInt3);
+            utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat1);
+            utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat2);
+            utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat3);
+            utn_getName("getName\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString1);
+            utn_getName("getName\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString2);
+            utn_getName("getName\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString3);
+            printf("\n Posicion: %d\n ID: %d\n varInt1: %d\n varInt2: %d\n varInt3: %d\n varFloat1: %f\n varFloat2: %f\n varFloat3: %f\n varString1: %s\n varString2: %s\n varString3: %s",
+                   posicion, array[posicion].idUnico,
+                   array[posicion].varInt1,array[posicion].varInt2,array[posicion].varInt3,
+                   array[posicion].varFloat1,array[posicion].varFloat2,array[posicion].varFloat3,
+                   array[posicion].varString1,array[posicion].varString2,array[posicion].varString3);
             retorno=0;
         }
     }
@@ -184,33 +192,28 @@ int fantasma_alta(Fantasma array[], int size, int* contadorID)                  
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
 *
 */
-int fantasma_baja(Fantasma array[], int sizeArray)                                      //cambiar fantasma
+int fantasma_baja(Fantasma array[], int sizeArray)
 {
     int retorno=-1;
     int posicion;
     int id;
     if(array!=NULL && sizeArray>0)
     {
-        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,&id);          //cambiar si no se busca por ID
-        if(fantasma_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
+        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,&id);
+        if(fantasma_buscarID(array,sizeArray,id,&posicion)==-1)
         {
-            printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID
+            printf("\nNo existe este ID");
         }
         else
         {
             array[posicion].isEmpty=1;
-            array[posicion].idUnico=0;                                                                   //cambiar campo id
-            array[posicion].varInt=0;                                                               //cambiar campo varInt
-            array[posicion].varFloat=0;                                                             //cambiar campo varFloat
-            strcpy(array[posicion].varString,"");                                                   //cambiar campo varString
-            strcpy(array[posicion].varLongString,"");                                               //cambiar campo varLongString
             retorno=0;
         }
     }
     return retorno;
 }
 
-//Baja valor repetido
+
 /** \brief Borra todos los elemento del array que contengan el valor buscado
 * \param array fantasma Array de fantasma
 * \param size int Tamaño del array
@@ -218,7 +221,7 @@ int fantasma_baja(Fantasma array[], int sizeArray)                              
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
 *
 */
-int fantasma_bajaValorRepetidoInt(Fantasma array[], int sizeArray, int valorBuscado) //cuando hay que dar de baja todas las posiciones en las que se encuentra ese int
+int fantasma_bajaValorRepetidoInt(Fantasma array[], int sizeArray, int valorBuscado)
 {
     int retorno=-1;
     int i;
@@ -226,14 +229,9 @@ int fantasma_bajaValorRepetidoInt(Fantasma array[], int sizeArray, int valorBusc
     {
         for(i=0;i<sizeArray;i++)
         {
-            if(array[i].idUnico==valorBuscado)                                                        //cambiar si no se busca por ID
+            if(array[i].idUnico==valorBuscado)
             {
                 array[i].isEmpty=1;
-                array[i].idUnico=0;                                                                   //cambiar campo id
-                array[i].varInt=0;                                                               //cambiar campo varInt
-                array[i].varFloat=0;                                                             //cambiar campo varFloat
-                strcpy(array[i].varString,"");                                                   //cambiar campo varString
-                strcpy(array[i].varLongString,"");                                               //cambiar campo varLongString
             }
         }
         retorno=0;
@@ -251,39 +249,58 @@ int fantasma_bajaValorRepetidoInt(Fantasma array[], int sizeArray, int valorBusc
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se modifica el elemento exitosamente
 *
 */
-int fantasma_modificar(Fantasma array[], int sizeArray)                                //cambiar fantasma
+int fantasma_modificar(Fantasma array[], int sizeArray)
 {
     int retorno=-1;
     int posicion;
-    int id;                                                                                         //cambiar si no se busca por ID
+    int id;
     char opcion;
     if(array!=NULL && sizeArray>0)
     {
-        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,&id);         //cambiar si no se busca por ID
-        if(fantasma_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
+        fantasma_listar(array,sizeArray);
+        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,&id);
+        if(fantasma_buscarID(array,sizeArray,id,&posicion)==-1)
         {
-            printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID
+            printf("\nNo existe este ID");
         }
         else
         {
             do
             {       //copiar printf de alta
-                printf("\n Posicion: %d\n ID: %d\n varInt: %d\n varFloat: %f\n varString: %s\n varLongString: %s",
-                       posicion, array[posicion].idUnico,array[posicion].varInt,array[posicion].varFloat,array[posicion].varString,array[posicion].varLongString);
-                utn_getChar("\nModificar: A B C D S(salir)","\nError",'A','Z',1,&opcion);
+                printf("\n Posicion: %d\n ID: %d\n varInt1: %d\n varInt2: %d\n varInt3: %d\n varFloat1: %f\n varFloat2: %f\n varFloat3: %f\n varString1: %s\n varString2: %s\n varString3: %s",
+                   posicion, array[posicion].idUnico,
+                   array[posicion].varInt1,array[posicion].varInt2,array[posicion].varInt3,
+                   array[posicion].varFloat1,array[posicion].varFloat2,array[posicion].varFloat3,
+                   array[posicion].varString1,array[posicion].varString2,array[posicion].varString3);
+                utn_getChar("\nModificar: \nA \nB \nC \nD \nS(salir)","\nError",'A','Z',1,&opcion);
                 switch(opcion)
                 {
                     case 'A':
-                        utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,&array[posicion].varInt);           //mensaje + cambiar campo varInt
+                        utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,&array[posicion].varInt1);
                         break;
                     case 'B':
-                        utn_getFloat("\n: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat);             //mensaje + cambiar campo varFloat
+                        utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,&array[posicion].varInt2);
                         break;
                     case 'C':
-                        utn_getName("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString);                      //mensaje + cambiar campo varString
+                        utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,&array[posicion].varInt3);
                         break;
                     case 'D':
-                        utn_getTexto("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varLongString);             //mensaje + cambiar campo varLongString
+                        utn_getFloat("\n: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat1);
+                        break;
+                    case 'E':
+                        utn_getFloat("\n: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat2);
+                        break;
+                    case 'F':
+                        utn_getFloat("\n: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat3);
+                        break;
+                    case 'G':
+                        utn_getName("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString1);
+                        break;
+                    case 'H':
+                        utn_getName("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString2);
+                        break;
+                    case 'I':
+                        utn_getName("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].varString3);
                         break;
                     case 'S':
                         break;
@@ -305,51 +322,51 @@ int fantasma_modificar(Fantasma array[], int sizeArray)                         
 * \return int Return (-1) si Error [largo no valido o NULL pointer] - (0) si se ordena exitosamente
 *
 */
-int fantasma_ordenarPorString(Fantasma array[],int size)                              //cambiar fantasma
+int fantasma_ordenarPorString(Fantasma array[],int size)
 {
     int retorno=-1;
     int i, j;
-    char bufferString[TEXT_SIZE];                               //cambiar campo varString
+    char bufferString1[TEXT_SIZE];
     int bufferId;
     int bufferIsEmpty;
 
-    int bufferInt;                                              //cambiar buffer int
-    float bufferFloat;                                          //cambiar buffer varFloat
-    char bufferLongString[TEXT_SIZE];                           //cambiar campo varLongString
+    int bufferInt;
+    float bufferFloat;
+    char bufferString2[TEXT_SIZE];
 
     if(array!=NULL && size>=0)
     {
         for (i = 1; i < size; i++)
         {
-            strcpy(bufferString,array[i].varString);                      //cambiar campo varString
-            bufferId=array[i].idUnico;                                   //cambiar campo id
+            strcpy(bufferString1,array[i].varString1);
+            bufferId=array[i].idUnico;
             bufferIsEmpty=array[i].isEmpty;
 
-            bufferInt=array[i].varInt;                                //cambiar campo varInt
-            bufferFloat=array[i].varFloat;                            //cambiar campo varFloat
-            strcpy(bufferLongString,array[i].varLongString);          //cambiar campo varLongString
+            bufferInt=array[i].varInt1;
+            bufferFloat=array[i].varFloat1;
+            strcpy(bufferString2,array[i].varString2);
 
 
             j = i - 1;
-            while ((j >= 0) && strcmp(bufferString,array[j].varString)<0)         //cambiar campo varString                 //Si tiene mas de un criterio se lo agrego, Ej. bufferInt<array[j].varInt
-            {                                                                                                               //buffer < campo ascendente   buffer > campo descendente
-                strcpy(array[j + 1].varString,array[j].varString);          //cambiar campo varString
-                array[j + 1].idUnico=array[j].idUnico;                                //cambiar campo id
+            while ((j >= 0) && strcmp(bufferString1,array[j].varString1)<0)
+            {
+                strcpy(array[j + 1].varString1,array[j].varString1);
+                array[j + 1].idUnico=array[j].idUnico;
                 array[j + 1].isEmpty=array[j].isEmpty;
 
-                array[j + 1].varInt=array[j].varInt;                        //cambiar campo varInt
-                array[j + 1].varFloat=array[j].varFloat;                    //cambiar campo varFloat
-                strcpy(array[j + 1].varLongString,array[j].varLongString);  //cambiar campo varLongString
+                array[j + 1].varInt1=array[j].varInt1;
+                array[j + 1].varFloat1=array[j].varFloat1;
+                strcpy(array[j + 1].varString2,array[j].varString2);
 
                 j--;
             }
-            strcpy(array[j + 1].varString,bufferString);                     //cambiar campo varString
-            array[j + 1].idUnico=bufferId;                                        //cambiar campo id
+            strcpy(array[j + 1].varString1,bufferString1);
+            array[j + 1].idUnico=bufferId;
             array[j + 1].isEmpty=bufferIsEmpty;
 
-            array[j + 1].varInt=bufferInt;                                                        //cambiar campo varInt
-            array[j + 1].varFloat=bufferFloat;                                                    //cambiar campo varFloat
-            strcpy(array[j + 1].varLongString,bufferLongString);                                  //cambiar campo varLongString
+            array[j + 1].varInt1=bufferInt;
+            array[j + 1].varFloat1=bufferFloat;
+            strcpy(array[j + 1].varString2,bufferString2);
         }
         retorno=0;
     }
@@ -364,7 +381,7 @@ int fantasma_ordenarPorString(Fantasma array[],int size)                        
 * \return int Return (-1) si Error [largo no valido o NULL pointer] - (0) si se lista exitosamente
 *
 */
-int fantasma_listar(Fantasma array[], int size)                      //cambiar fantasma
+int fantasma_listar(Fantasma array[], int size)
 {
     int retorno=-1;
     int i;
@@ -375,8 +392,11 @@ int fantasma_listar(Fantasma array[], int size)                      //cambiar f
             if(array[i].isEmpty==1)
                 continue;
             else
-                printf("\n ID: %d\n varInt: %d\n varFloat: %f\n varString: %s\n varLongString: %s",
-                       array[i].idUnico,array[i].varInt,array[i].varFloat,array[i].varString,array[i].varLongString);      //cambiar todos
+                printf("\n Posicion: %d\n ID: %d\n varInt1: %d\n varInt2: %d\n varInt3: %d\n varFloat1: %f\n varFloat2: %f\n varFloat3: %f\n varString1: %s\n varString2: %s\n varString3: %s",
+                       i, array[i].idUnico,
+                       array[i].varInt1,array[i].varInt2,array[i].varInt3,
+                       array[i].varFloat1,array[i].varFloat2,array[i].varFloat3,
+                       array[i].varString1,array[i].varString2,array[i].varString3);
         }
         retorno=0;
     }

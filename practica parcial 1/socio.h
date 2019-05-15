@@ -21,7 +21,7 @@ typedef struct
 }Socio;
 
 
-#endif // SOCIO_H_INCLUDED
+
 
 int socio_Inicializar(Socio array[], int size);                                    //cambiar socio
 int socio_buscarEmpty(Socio array[], int size, int* posicion);                    //cambiar socio
@@ -34,5 +34,5 @@ int socio_bajaValorRepetidoInt(Socio array[], int sizeArray, int valorBuscado);
 int socio_modificar(Socio array[], int sizeArray);                                //cambiar socio
 int socio_ordenarPorString(Socio array[],int size);                              //cambiar socio
 int socio_listar(Socio array[], int size);                      //cambiar socio
-
+#endif // SOCIO_H_INCLUDED
 

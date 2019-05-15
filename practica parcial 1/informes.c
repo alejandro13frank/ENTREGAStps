@@ -22,7 +22,7 @@ int Informes_listarPorCriterio(Fantasma arrayA[], Fantasma arrayB[], int sizeI, 
     {
         for(i=0;i<sizeI;i++)                                                                            //Obtengo la posicion de la primer entidad
         {
-            if(arrayA[i].isEmpty==1 && strcmp(arrayA[i].varString,criterio)!=0)                 //cambiar campo donde busco el criterio
+            if(arrayA[i].isEmpty==1 && strcmp(arrayA[i].varString1,criterio)!=0)                 //cambiar campo donde busco el criterio
                 continue;                                                                       //si esta vacio o no tiene el criterio > continue
             else
             {
@@ -59,20 +59,20 @@ int Informes_listarCriterioContadorAcumulado(Fantasma arrayA[], Fantasma arrayB[
     {
         for(i=0;i<sizeI;i++)
         {
-            fantasma_buscarString(arrayA,i,arrayA[i].varString,&auxPosicion);                  //cambiar nombreFuncion y campo      va a analizar hasta <i
+            fantasma_buscarString(arrayA,i,arrayA[i].varString1,&auxPosicion);                  //cambiar nombreFuncion y campo      va a analizar hasta <i
             if(arrayA[i].isEmpty==1 && auxPosicion!=-1)
                 continue;                                                                 //Si ese valor ya aparecio > continue
             else
             {
-                printf("\nCampo: %s",arrayA[i].varString);                                   //Imprimo el valor que voy a listar
+                printf("\nCampo: %s",arrayA[i].varString1);                                   //Imprimo el valor que voy a listar
                 for(k=i,contador=0,acumulado=0;k<sizeI;k++)                                                            //Recorro por segunda vez el mismo array
                 {
-                    if(arrayA[k].isEmpty!=1 && strcmp(arrayA[k].varString,arrayA[i].varString)==0)     //Busco todas las veces que aparece ese cuit
+                    if(arrayA[k].isEmpty!=1 && strcmp(arrayA[k].varString1,arrayA[i].varString1)==0)     //Busco todas las veces que aparece ese cuit
                     {
                         fantasma_buscarID(arrayB,sizeJ,arrayA[k].idUnico,&j);                 //cambiar Fantasma, busco por el campo en comun
 
                         contador++;
-                        acumulado+=(arrayA[k].varInt*arrayB[j].varInt);
+                        acumulado+=(arrayA[k].varInt1*arrayB[j].varInt1);
 
                         printf("\nID A: %d\nID B: %d",
                                 arrayA[k].idUnico,arrayB[j].idUnico);
@@ -114,21 +114,21 @@ int Informes_maxContadorAcumulado(Fantasma arrayA[], Fantasma arrayB[], int size
     {
         for(i=0;i<sizeI;i++)
         {
-            fantasma_buscarString(arrayA,i,arrayA[i].varString,&auxPosicion);                  //cambiar nombreFuncion y campo
+            fantasma_buscarString(arrayA,i,arrayA[i].varString1,&auxPosicion);                  //cambiar nombreFuncion y campo
             if(arrayA[i].isEmpty==1 && auxPosicion!=-1)
                 continue;                                                                 //Si ese valor ya aparecio > continue
             else
             {
-                printf("\nCampo: %s",arrayA[i].varString);                                   //Imprimo el valor que voy a listar
+                printf("\nCampo: %s",arrayA[i].varString1);                                   //Imprimo el valor que voy a listar
                 for(k=i;k<sizeI;k++)                                                            //Recorro por segunda vez el mismo array
                 {
-                    if(arrayA[k].isEmpty!=1 && strcmp(arrayA[k].varString,arrayA[i].varString)==0)     //Busco todas las veces que aparece ese cuit
+                    if(arrayA[k].isEmpty!=1 && strcmp(arrayA[k].varString1,arrayA[i].varString1)==0)     //Busco todas las veces que aparece ese cuit
                     {
 
                         fantasma_buscarID(arrayB,sizeJ,arrayA[k].idUnico,&j);                 //cambiar Fantasma, busco por el campo en comun
 
                         contador++;                                                         //calculos acumulados y contador
-                        acumulador+=(arrayA[k].varInt*arrayB[j].varInt);
+                        acumulador+=(arrayA[k].varInt1*arrayB[j].varInt1);
 
                         printf("\nID A: %d\nID B: %d",                                         //imprimo datos que haya que mostrar
                                 arrayA[k].idUnico,arrayB[j].idUnico);
@@ -168,14 +168,14 @@ int Informes_maxContadorAcumulado(Fantasma arrayA[], Fantasma arrayB[], int size
         {
             if(iMaxAcumulado[i]!=-2)                         //Salteo los vacios
             {
-                printf("\n          CUIT: %s",arrayA[iMaxAcumulado[i]].varString);
+                printf("\n          CUIT: %s",arrayA[iMaxAcumulado[i]].varString1);
             }
         }
         for(;iMaxContador[i]!=-1;i--)
         {
             if(iMaxContador[i]!=-2)                         //Salteo los vacios
             {
-                printf("\n          CUIT: %s",arrayA[iMaxContador[i]].varString);
+                printf("\n          CUIT: %s",arrayA[iMaxContador[i]].varString1);
             }
         }
 
@@ -208,25 +208,25 @@ int Informes_listarAuxiliarOrdenar(Fantasma arrayA[], Fantasma arrayB[], int siz
     {
         for(i=0;i<sizeI;i++)
         {
-            fantasma_buscarString(arrayA,i,arrayA[i].varString,&auxPosicion);                  //cambiar nombreFuncion y campo      va a analizar hasta <i
+            fantasma_buscarString(arrayA,i,arrayA[i].varString1,&auxPosicion);                  //cambiar nombreFuncion y campo      va a analizar hasta <i
             if(arrayA[i].isEmpty==1 && auxPosicion!=-1)
                 continue;                                                                 //Si ese valor ya aparecio > continue
             else
             {
-                strcpy(arrayAux[i].varString,arrayA[i].varString);                              //cambio varstring
+                strcpy(arrayAux[i].varString1,arrayA[i].varString1);                              //cambio varstring
                 for(k=i;k<sizeI;k++)                                                            //Recorro por segunda vez el mismo array
                 {
-                    if(arrayA[k].isEmpty!=1 && strcmp(arrayA[k].varString,arrayA[i].varString)==0)     //Busco todas las veces que aparece ese cuit
+                    if(arrayA[k].isEmpty!=1 && strcmp(arrayA[k].varString1,arrayA[i].varString1)==0)     //Busco todas las veces que aparece ese cuit
                     {
                         fantasma_buscarID(arrayB,sizeJ,arrayA[k].idUnico,&j);                 //cambiar Fantasma, busco por el campo en comun
 
                         contador++;
-                        acumulado+=(arrayA[k].varInt*arrayB[j].varInt);
+                        acumulado+=(arrayA[k].varInt1*arrayB[j].varInt1);
 
                     }
                 }
-                arrayAux[i].varInt=contador;                                    //completo el resto de los campos
-                arrayAux[i].varInt=acumulado;
+                arrayAux[i].varInt1=contador;                                    //completo el resto de los campos
+                arrayAux[i].varInt1=acumulado;
                 arrayAux[i].isEmpty=0;
 
                 contador=0;

@@ -94,3 +94,67 @@
 
 1557343987 /home/mauro/Descargas/FANTASMA/fantasma.h
 
+1557439396 source:/home/alejandro/ENTREGAStps/practica parcial 1/autor.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"autor.h"
+
+1557439317 /home/alejandro/ENTREGAStps/practica parcial 1/utn.h
+
+1557872664 /home/alejandro/ENTREGAStps/practica parcial 1/autor.h
+
+1557439460 source:/home/alejandro/ENTREGAStps/practica parcial 1/fantasma.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"fantasma.h"
+
+1557436315 /home/alejandro/ENTREGAStps/practica parcial 1/fantasma.h
+
+1557436315 source:/home/alejandro/ENTREGAStps/practica parcial 1/informes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"fantasma.h"
+
+1557873609 source:/home/alejandro/ENTREGAStps/practica parcial 1/libro.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"autor.h"
+	"libro.h"
+	"utn.h"
+
+1557873458 /home/alejandro/ENTREGAStps/practica parcial 1/libro.h
+
+1557873433 source:/home/alejandro/ENTREGAStps/practica parcial 1/main.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"autor.h"
+
+1557872664 source:/home/alejandro/ENTREGAStps/practica parcial 1/prestamo.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"socio.h"
+	"libro.h"
+	"utn.h"
+	"prestamo.h"
+
+1557872452 /home/alejandro/ENTREGAStps/practica parcial 1/socio.h
+
+1557872452 /home/alejandro/ENTREGAStps/practica parcial 1/prestamo.h
+
+1557873485 source:/home/alejandro/ENTREGAStps/practica parcial 1/socio.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"socio.h"
+

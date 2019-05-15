@@ -10,11 +10,8 @@ typedef struct
     //-----------------
     char nombre[TEXT_SIZE];
     char apellido[TEXT_SIZE];
-
 }Autor;
 
-
-#endif // AUTOR_H_INCLUDED
 
 int autor_Inicializar(Autor array[], int size);                                    //cambiar autor
 int autor_buscarEmpty(Autor array[], int size, int* posicion);                    //cambiar autor
@@ -27,4 +24,4 @@ int autor_bajaValorRepetidoInt(Autor array[], int sizeArray, int valorBuscado);
 int autor_modificar(Autor array[], int sizeArray);                                //cambiar autor
 int autor_ordenarPorString(Autor array[],int size);                              //cambiar autor
 int autor_listar(Autor array[], int size);                      //cambiar autor
-
+#endif // AUTOR_H_INCLUDED

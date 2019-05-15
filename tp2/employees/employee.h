@@ -15,7 +15,7 @@ typedef struct
 
 }Employee;
 
-int employee_obtenerDatos(Employee employee,int* contadorID);
+int employee_obtenerDatos(Employee employee[],int* contadorID);
 
 int employee_Inicializar(Employee *employees, int size);
 

@@ -182,6 +182,9 @@ int prestamo_alta(Prestamo array[],Socio arraySocio[],Libro arrayLibro[], int si
                     {
                         printf("\nNo se encontro el ID ingresado");
                     }else{
+                            utn_getUnsignedInt("\nIngrese dia ","\nError",1,2,2,&array[posicion].dia);
+                            utn_getUnsignedInt("\nIngrese mes : ","\nError",1,2,2,&array[posicion].mes);
+                            utn_getUnsignedInt("\nIngrese año : ","\nError",1,4,2,&array[posicion].ano);
                             array[posicion].codigoDeLibro = idLibro;
                             array[posicion].codigoDeSocio = idSocio;
                             array[posicion].isEmpty=0;
@@ -212,7 +215,8 @@ int prestamo_baja(Prestamo array[], int sizeArray)                              
     int id;
     if(array!=NULL && sizeArray>0)
     {
-        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);          //cambiar si no se busca por ID
+        prestamo_listar(array,sizeArray);
+        utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,&id);          //cambiar si no se busca por ID
         if(prestamo_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
         {
             printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID
@@ -220,8 +224,8 @@ int prestamo_baja(Prestamo array[], int sizeArray)                              
         else
         {
             array[posicion].isEmpty=1;
-            array[posicion].idUnico=0;                                                                   //cambiar campo id
-            array[posicion].codigoDeLibro=0;                                                               //cambiar campo codigoDeLibro
+            //array[posicion].idUnico=0;                                                                   //cambiar campo id
+            //array[posicion].codigoDeLibro=0;                                                               //cambiar campo codigoDeLibro
             //array[posicion].varFloat=0;                                                             //cambiar campo varFloat
             //strcpy(array[posicion].varString,"");                                                   //cambiar campo varString
             //strcpy(array[posicion].varLongString,"");                                               //cambiar campo varLongString
@@ -239,6 +243,7 @@ int prestamo_baja(Prestamo array[], int sizeArray)                              
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
 *
 */
+/*
 int prestamo_bajaValorRepetidoInt(Prestamo array[], int sizeArray, int valorBuscado) //cuando hay que dar de baja todas las posiciones en las que se encuentra ese int
 {
     int retorno=-1;
@@ -260,7 +265,7 @@ int prestamo_bajaValorRepetidoInt(Prestamo array[], int sizeArray, int valorBusc
         retorno=0;
     }
     return retorno;
-}
+}*/
 
 
 
@@ -271,7 +276,7 @@ int prestamo_bajaValorRepetidoInt(Prestamo array[], int sizeArray, int valorBusc
 * \param size int Tamaño del array
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se modifica el elemento exitosamente
 *
-*/
+*//*
 int prestamo_modificar(Prestamo array[], int sizeArray)                                //cambiar prestamo
 {
     int retorno=-1;
@@ -316,7 +321,7 @@ int prestamo_modificar(Prestamo array[], int sizeArray)                         
         }
     }
     return retorno;
-}
+}*/
 
 //*****************************************
 //Ordenar
