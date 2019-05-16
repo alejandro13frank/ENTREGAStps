@@ -19,9 +19,6 @@ typedef struct
     float varFloat3;
 }Fantasma;
 
-
-#endif // FANTASMA_H_INCLUDED
-
 int fantasma_Inicializar(Fantasma array[], int size);
 int fantasma_buscarEmpty(Fantasma array[], int size, int* posicion);
 int fantasma_buscarID(Fantasma array[], int size, int valorBuscado, int* posicion);
@@ -33,4 +30,4 @@ int fantasma_bajaValorRepetidoInt(Fantasma array[], int sizeArray, int valorBusc
 int fantasma_modificar(Fantasma array[], int sizeArray);
 int fantasma_ordenarPorString(Fantasma array[],int size);
 int fantasma_listar(Fantasma array[], int size);
-
+#endif // FANTASMA_H_INCLUDED

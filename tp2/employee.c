@@ -92,14 +92,14 @@ int employee_buscarID(Employee *employees, int size, int valorBuscado, int* posi
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no hay posiciones vacias] - (0) si se agrega un nuevo elemento exitosamente
 *
 */
-int employee_obtenerDatos(Employee employee,int* contadorID)
+int employee_obtenerDatos(Employee *employee,int* contadorID)
 {
     int retorno=-1;
     if(contadorID!=NULL)
     {
         (*contadorID)++;
         employee.id=*contadorID;
-        utn_getSignedInt("\nIngrese Sector: ","\nError",1,sizeof(int),1,&employee.sector);
+        utn_getSignedInt("\nIngrese Sector: ","\nError",1,sizeof(int),1,&employee->sector);//ACA ES DONDE VA EL OPERADOR FLECHA
         utn_getFloat("\nIngrese salario: ","\nError",1,sizeof(float),1,&employee.salary);
         utn_getName("\nIngrese nombre: ","\nError",1,TEXT_SIZE,1,employee.name);
         utn_getName("\nIngrese apellido: ","\nError",1,TEXT_SIZE,1,employee.lastName);
