@@ -102,7 +102,7 @@ int Per_buscarID(Persona* array[], int size, int valorBuscado, int* posicion)   
     {
         for(i=0;i<size;i++)
         {
-            if(array[i].id==valorBuscado)
+            if(array[i]->id==valorBuscado)
             {                                            //cambiar campo ID
                 retorno=0;
                 *posicion=i;
@@ -129,10 +129,10 @@ int Per_modificar(Persona* array[], int size)
     if(array!=NULL && size>0)
     {
         utn_getSignedInt("\nIngrese edad:","\nERROR",1,3,1,size,2,&idBuscado);
-        Per_buscarID(array,size,id,&pos)
+        Per_buscarID(array,size,idBuscado,&pos);
         for(i=0;i<size;i++)
         {
-            if(array[i]->id==id)
+            if(array[i]->id==idBuscado)
             {
                 utn_getSignedInt("\nMODIFICAR: 1(nombre) 2(apellido) 3(edad) 4(salir)","\nERROR",1,4,1,4,2,&opcionMenu);
                 do{
