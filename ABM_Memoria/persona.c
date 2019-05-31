@@ -3,7 +3,7 @@
 #include <string.h>
 #include "persona.h"
 #include "utn_strings.h"
-
+static void setIdInicial(int val);
 static int generarId(void);
 
 Persona* persona_new()
@@ -204,9 +204,56 @@ int persona_findFree(Persona* arrayPersona[], int lenPersona)
     }
     return ret;
 }
-
+static int idPer=0;
 static int generarId(void)
 {
-    static int idPer=0;
     return idPer++;
+}
+static void setIdInicial(int val)
+{
+    idPer= val;
+}
+
+int persona_parcer(char* nombreArchivo,Persona *arrayPersona[],int size)
+{
+    FILE *personaTxt  = fopen(nombreArchivo,"r");
+    int retorno=-1;
+    Persona *auxPersona;
+    int r;
+    int maxId=-1;
+    char nombre[512];
+    char apellido[512];
+    char edad[512];
+    int id;
+    char auxA[512];
+    int i=0;
+    if (personaTxt!=NULL)
+    {
+        fscanf(personaTxt,"%[^\n]\n",auxA);
+        do
+        {
+            r = fscanf(personaTxt,"%d,%[^,],%[^,],%[^\n]\n",&id,nombre,apellido,edad);
+            if (r==4)
+            {
+                auxPersona = persona_new();
+                if (auxPersona!=NULL)
+                {
+                    if (id>maxId) //usar id de tipo int, usando atoi
+                    {
+                        maxId=id;
+                    }
+                    persona_setId(auxPersona,id);
+                    persona_setEdad(auxPersona,edad);
+                    persona_setNombre(auxPersona,nombre);
+                    persona_setApellido(auxPersona,apellido);
+                    arrayPersona[i]=auxPersona;
+                    i++;
+                }
+            }
+        }while(!feof(personaTxt));
+        setIdInicial(maxId);
+        fclose(personaTxt);
+        retorno=i;
+    }
+   return retorno;
 }
