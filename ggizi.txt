@@ -1,0 +1,238 @@
+pantallita
+
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+int analogread=0;
+int oldanalogread=0;
+void setup()
+{
+  lcd.begin(16,2);
+}
+
+void loop() {
+analogread=analogRead(A0);
+if(analogread>1000&&oldanalogread<1000){
+  lcd.clear();
+  oldanalogread=analogread;
+  lcd.print("NADA");
+  }
+
+else if(analogread<30&&oldanalogread>30){
+  lcd.clear();
+  oldanalogread=analogread;
+  lcd.print("RIGHT");
+}
+else if(analogread>100&&analogread<200&&(oldanalogread<100||oldanalogread>200)){
+  lcd.clear();
+  oldanalogread=analogread;
+  lcd.print("UP");
+}
+else if(analogread>300&&analogread<400&&(oldanalogread<300||oldanalogread>400)){
+  lcd.clear();
+  oldanalogread=analogread;
+  lcd.print("DOWN");
+}
+else if(analogread>450&&analogread<550&&(oldanalogread<450||oldanalogread>550)){
+  lcd.clear();
+  oldanalogread=analogread;
+  lcd.print("LEFT");
+}
+else if(analogread>700&&analogread<800&&(oldanalogread<700||oldanalogread>800)){
+  lcd.clear();
+  oldanalogread=analogread;
+  lcd.print("SELECT");
+}
+
+}
+
+
+
+sensor de temperaura
+
+
+
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(8, 9, 4, 5, 6, 7);        // select the pins used on the LCD panel
+
+unsigned long tepTimer ;
+
+void setup(){
+    lcd.begin(16, 2);                       // start the library
+}
+
+void loop(){
+    lcd.setCursor(0, 0);                   // set the LCD cursor   position
+    int val;                               // variable to store the value coming from the analog pin
+    double data;                           // variable to store the temperature value coming from the conversion formula
+    val=analogRead(A3);                     // read the analog in value:
+    data = (double) val * (5/10.24);       // temperature conversion formula
+
+    if(millis() - tepTimer > 500){         // output a temperature value per 500ms
+             tepTimer = millis();
+
+             // print the results to the lcd
+             lcd.print("T: ");
+             lcd.print(data);
+             lcd.print("C");
+     }
+}
+
+
+
+mover cosito(sevo) de 0 a 180 grados
+
+
+
+#include <Servo.h>
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+Servo servoMotor;
+int analogread=0;
+int oldanalogread=0;
+ int mover=0;
+void setup() {
+  // Iniciamos el monitor serie para mostrar el resultado
+  Serial.begin(9600);
+ 
+  // Iniciamos el servo para que empiece a trabajar con el pin 9
+  servoMotor.attach(A3);
+  lcd.begin(16, 2);
+}
+ 
+void loop() {
+
+  analogread=analogRead(A0);
+
+  if(analogread>1000&&oldanalogread<1000)
+  {
+    lcd.clear();
+    oldanalogread=analogread;
+    lcd.print("NADA");
+  }
+  else if(analogread<30)
+  {
+    lcd.clear();
+    oldanalogread=analogread;
+    lcd.print("RIGHT");
+    mover=mover+1;
+     servoMotor.write(mover);
+     if(mover>=360)
+     {
+      mover=0; 
+     }
+  }
+  else if(analogread>450&&analogread<550){
+    lcd.clear();
+    oldanalogread=analogread;
+    lcd.print("LEFT");
+    mover=mover-1;
+    servoMotor.write(mover);
+     if(mover<=0)
+     {
+      mover=359; 
+     }
+    
+  }
+  /*
+  // Desplazamos a la posición 0º
+  servoMotor.write(0);
+  lcd.print("0");
+  
+  // Esperamos 1 segundo
+  delay(1000);
+  
+  // Desplazamos a la posición 90º
+  servoMotor.write(90);
+  lcd.print("90");
+  // Esperamos 1 segundo
+  delay(1000);
+  
+  // Desplazamos a la posición 180º
+ servoMotor.write(180);
+  lcd.print("180");
+  // Esperamos 1 segundo
+  delay(1000);*/                
+}
+
+
+
+servo 2.0
+
+#include <Servo.h>
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+Servo servoMotor;
+int analogread=0;
+int oldanalogread=0;
+ int mover=0;
+
+void setup() {
+  // Iniciamos el monitor serie para mostrar el resultado
+  Serial.begin(9600);
+ 
+  // Iniciamos el servo para que empiece a trabajar con el pin 9
+  servoMotor.attach(A3);
+  lcd.begin(16, 2);
+}
+ 
+void loop() {
+
+  analogread=analogRead(A0);
+
+  if(analogread>1000&&oldanalogread<1000)
+  {
+    lcd.clear();
+    oldanalogread=analogread;
+    lcd.print("NADA");
+  }
+  else if(analogread<30)
+  {
+    lcd.clear();
+    oldanalogread=analogread;
+    lcd.print("RIGHT");
+    if(mover!=180)
+    {
+     
+    mover=mover+1;
+    }
+     servoMotor.write(mover);
+     
+     
+  }
+  else if(analogread>450&&analogread<550){
+    lcd.clear();
+    oldanalogread=analogread;
+    lcd.print("LEFT");
+        if(mover!=0)
+    {
+     
+    mover=mover-1;
+    }
+    servoMotor.write(mover);
+    
+    
+  }
+  /*
+  // Desplazamos a la posición 0º
+  servoMotor.write(0);
+  lcd.print("0");
+  
+  // Esperamos 1 segundo
+  delay(1000);
+  
+  // Desplazamos a la posición 90º
+  servoMotor.write(90);
+  lcd.print("90");
+  // Esperamos 1 segundo
+  delay(1000);
+  
+  // Desplazamos a la posición 180º
+ servoMotor.write(180);
+  lcd.print("180");
+  // Esperamos 1 segundo
+  delay(1000);*/                
+}
