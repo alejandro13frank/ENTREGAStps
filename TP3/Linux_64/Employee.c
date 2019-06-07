@@ -1,6 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Employee.h"
+#include "utn.h"
+#include "string.h"
+
+static int idPer=0;
+
+int employee_generarId(void)
+{
+    return idPer++;
+}
+ void employee_setIdInicial(int val)
+{
+    idPer= val;
+}
+void imprimirMasterId(void)
+{
+    printf("\n%d",idPer);
+}
 
 Employee* employee_new(void)
 {
@@ -9,13 +26,12 @@ Employee* employee_new(void)
 
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
 {
-    int retorno=-1;
     Employee* pEmployee=employee_new();
     if (pEmployee!=NULL)
     {
         employee_setIdStr(pEmployee,idStr);
         employee_setNombre(pEmployee,nombreStr);
-        employee_setHorasTrabajadas(pEmployee,horasTrabajadasStr);
+        employee_setHorasTrabajadasStr(pEmployee,horasTrabajadasStr);
         employee_setSueldoStr(pEmployee,sueldoStr);
     }
     return pEmployee;
@@ -54,7 +70,7 @@ int employee_setIdStr(Employee* this,char* id)
     int bufferInt;
     if (this!=NULL && isValidNumber(id))
     {
-        atoi(bufferInt);
+        bufferInt= atoi(id);
         if (bufferInt>0)
         {
             employee_setId(this,bufferInt);
@@ -113,16 +129,16 @@ int employee_setHorasTrabajadasStr(Employee* this,char* horasTrabajadasStr)
     int bufferHora;
     if (this!=NULL && isValidNumber(horasTrabajadasStr))
     {
-        atoi(bufferHora);
+        bufferHora= atoi(horasTrabajadasStr);
         if (bufferHora>0)
         {
-            employee_setId(this,bufferHora);
+            employee_setHorasTrabajadas(this,bufferHora);
         }
     }
     return retorno;
 }
 
-int employee_setSueldo(Employee* this,float sueldo)
+int employee_setSueldo(Employee* this,int sueldo)
 {
     int retorno=-1;
     if (this!=NULL && sueldo>0)
@@ -133,7 +149,7 @@ int employee_setSueldo(Employee* this,float sueldo)
     return retorno;
 }
 
-int employee_getSueldo(Employee* this,float* sueldo)
+int employee_getSueldo(Employee* this,int* sueldo)
 {
     int retorno=-1;
     if (this!=NULL)
@@ -150,10 +166,10 @@ int employee_setSueldoStr(Employee* this,char* sueldo)
     int buffersueldo;
     if (this!=NULL && isValidNumber(sueldo))
     {
-        atoi(buffersueldo);
+        buffersueldo=atoi(sueldo);
         if (buffersueldo>0)
         {
-            employee_setId(this,buffersueldo);
+            employee_setSueldo(this,buffersueldo);
         }
     }
     return retorno;

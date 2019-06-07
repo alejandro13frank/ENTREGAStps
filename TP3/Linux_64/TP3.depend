@@ -53,3 +53,46 @@
 	"LinkedList.h"
 	"Employee.h"
 
+1559862787 source:/home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+
+1533133022 /home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/LinkedList.h
+
+1559861651 /home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/Employee.h
+
+1533133022 /home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/parser.h
+
+1559861967 source:/home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	"utn.h"
+	"string.h"
+
+1559253080 /home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/utn.h
+
+1559863219 source:/home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1533133022 /home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/Controller.h
+
+1559860793 source:/home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1559253080 source:/home/alumno/Documentos/ENTREGAStps/TP3/Linux_64/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

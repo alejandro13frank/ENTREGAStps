@@ -8,6 +8,10 @@ typedef struct
     int sueldo;
 }Employee;
 
+void employee_setIdInicial(int val);
+int employee_generarId(void);
+void imprimirMasterId(void);
+
 Employee* employee_new(void);
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldo);
 void employee_delete(Employee* this);
@@ -24,8 +28,8 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas);
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
 int employee_setHorasTrabajadasStr(Employee* this,char* horasTrabajadasStr);
 
-int employee_setSueldo(Employee* this,float sueldo);
-int employee_getSueldo(Employee* this,float* sueldo);
+int employee_setSueldo(Employee* this,int sueldo);
+int employee_getSueldo(Employee* this,int* sueldo);
 
 int employee_setSueldoStr(Employee* this,char* sueldo);
 
