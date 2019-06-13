@@ -267,7 +267,7 @@ int ll_clear(LinkedList* this)
         lenLista=ll_len(this);
         for(i=0;i<lenLista;i++)
         {
-            ll_remove(this,i);
+            ll_remove(this,0);
         }
         returnAux=0;
     }
@@ -310,14 +310,15 @@ int ll_indexOf(LinkedList* this, void* pElement)
     if (this!=NULL)
     {
         lenLista=ll_len(this);
+        pAuxNode=this->pFirstNode;
         for(i=0;i<lenLista;i++)
         {
-            pAuxNode=getNode(this,i);
-            if ((pAuxNode->pElement)==pElement)
+            if(pAuxNode->pElement==pElement)
             {
                 returnAux=i;
                 break;
             }
+            pAuxNode=pAuxNode->pNextNode;
         }
     }
     return returnAux;
@@ -419,7 +420,7 @@ int ll_contains(LinkedList* this, void* pElement)
     if(this!=NULL)
     {
         buffer=ll_indexOf(this,pElement);
-        if (buffer!=-1)
+        if (buffer>=0)
         {
             returnAux=1;
         }
@@ -445,7 +446,7 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     int returnAux = -1;
     int lenLista;
     int i;
-    Node *AuxNodeThis2;
+    Node *auxNodeThis2;
     if (this!=NULL && this2!=NULL)
     {
         lenLista=ll_len(this2);
@@ -455,15 +456,16 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
         }
         else
         {
+            auxNodeThis2=this->pFirstNode;
             for(i=0;i<lenLista;i++)
             {
-                AuxNodeThis2=getNode(this2,i);
-                if (!ll_contains(this,AuxNodeThis2->pElement))
+                if (!ll_contains(this,auxNodeThis2->pElement))
                 {
                     break;
                 }
+                auxNodeThis2=auxNodeThis2->pNextNode;
             }
-            if(i==(ll_len(this2)-1))
+            if(i==lenLista)
             {
                 returnAux=1;
             }
@@ -492,12 +494,12 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
     int i;
     int lenLista=ll_len(this);
     Node *pAuxNode;
-    if (this!=NULL && from>=0 && from<lenLista && to>from && to<lenLista)
+    if (this!=NULL && from>=0 && from<lenLista && to>from && to<=lenLista)
     {
         cloneArray=ll_newLinkedList();
         if (cloneArray!=NULL)
         {
-            for(i=from;i<=to;i++)
+            for(i=from;i<to;i++)
             {
                 pAuxNode=getNode(this,i);
                 addNode(cloneArray,i,pAuxNode->pElement);
@@ -517,7 +519,7 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 */
 LinkedList* ll_clone(LinkedList* this)
 {
-    return ll_subList(this,0,ll_len(this)-1);
+    return ll_subList(this,0,ll_len(this));
 }
 
 
@@ -531,8 +533,48 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
-
+    int i;
+    int flagNoEstaOrdenado=1;
+    int lenLista=ll_len(this);
+    Node *pNodeA;
+    Node *pNodeB;
+    void *pAuxElement;
+    if (this!=NULL && pFunc!=NULL && (order==0 || order==1))
+    {
+        if(lenLista>=2)
+        {
+            while(flagNoEstaOrdenado==1)
+            {
+                flagNoEstaOrdenado=0;
+                pNodeA=this->pFirstNode->pNextNode;
+                pNodeB=this->pFirstNode;
+                for(i=1;i<lenLista;i++)
+                {
+                    if (order==0 && pFunc(pNodeA->pElement,pNodeB->pElement)>0)
+                    {
+                        pAuxElement=pNodeA->pElement;
+                        pNodeA->pElement=pNodeB->pElement;
+                        pNodeB->pElement=pAuxElement;
+                        flagNoEstaOrdenado=1;
+                    }
+                    if(order==1 && pFunc(pNodeA->pElement,pNodeB->pElement)<0)
+                    {
+                        pAuxElement=pNodeA->pElement;
+                        pNodeA->pElement=pNodeB->pElement;
+                        pNodeB->pElement=pAuxElement;
+                        flagNoEstaOrdenado=1;
+                    }
+                    pNodeA=pNodeA->pNextNode;
+                    pNodeB=pNodeB->pNextNode;
+                }
+            }
+            returnAux=0;
+        }
+        else
+        {
+            returnAux=0;
+        }
+    }
     return returnAux;
-
 }
 
