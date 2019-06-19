@@ -64,8 +64,9 @@ void* ll_iterNext(IterNode* nodeIter);
 int ll_iterEnd(IterNode* nodeIter);
 int ll_iterFinishIter(IterNode* nodeIter);
 //--------------------
-int ll_printBy(LinkedList* this, int (*pFunc)(void*));
-LinkedList* ll_subListBy(LinkedList* this, int (*pFunc)(void*));
+int ll_map(LinkedList* this, int (*pFunc)(void*));
+LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*));
+int ll_reduce(LinkedList* this, int (*pFunc)(void*));
 
 
 

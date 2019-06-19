@@ -23,6 +23,12 @@
 #include "../inc/LinkedList.h"
 
 #include "../testing/inc/Employee.h"
+int criterio(void* empleado)
+{
+    return ((Employee*)empleado)->id>5;
+}
+
+
 int i;
 void* buffer;
 Employee* empleado;
@@ -52,11 +58,20 @@ int main(void)
         {
             ll_add(list,newEmployee(i,"gato","macri",i,i));
         }
-        IterNode* newIter=ll_iterInit(list);
+        /*IterNode* newIter=ll_iterInit(list);
         while(!ll_iterEnd(newIter))
         {
            empleado=(Employee*)ll_iterNext(newIter);
            printf("\n ID: %s",empleado->lastName);
+        }
+        ll_iterFinishIter(newIter);*/
+
+        ll_reduce(list,criterio);
+        IterNode* newIter=ll_iterInit(list);
+        while(!ll_iterEnd(newIter))
+        {
+           empleado=(Employee*)ll_iterNext(newIter);
+           printf("\n ID: %d",empleado->id);
         }
         ll_iterFinishIter(newIter);
 
