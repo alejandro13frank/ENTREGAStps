@@ -23,9 +23,15 @@
 #include "../inc/LinkedList.h"
 
 #include "../testing/inc/Employee.h"
-int criterio(void* empleado)
+int criterio2(void* empleado, void* entero)
 {
-    return ((Employee*)empleado)->id>5;
+    int i=0;
+    if (((Employee*)empleado)->id>5 && *((int*)entero)==((Employee*)empleado)->salary)
+    {
+        i=1;
+    }
+
+    return i;
 }
 
 
@@ -66,7 +72,7 @@ int main(void)
         }
         ll_iterFinishIter(newIter);*/
 
-        ll_reduce(list,criterio);
+        //ll_reduce(list,criterio);
         IterNode* newIter=ll_iterInit(list);
         while(!ll_iterEnd(newIter))
         {
